@@ -48,6 +48,7 @@ import "./App.css";
 function App() {
   return (
     <>
+      {/* <h1>TEST REFRESH</h1> */}
       <Router>
         <Navbar />
         <Switch>
