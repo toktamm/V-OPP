@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import Detailed from "./components/pages/Detailed";
 
 import "./App.css";
 
@@ -55,6 +56,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/detailed" component={Detailed} />
         </Switch>
       </Router>
     </>

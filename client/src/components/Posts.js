@@ -13,7 +13,7 @@ function Posts() {
               title="Earth Day Community Clean-Ups"
               text="On Earth Day join hundreds of high school students to clean Toronto together! Choose a location that works best for you and sign-up with your friends.On Earth Day join hundreds of high school students to clean Toronto together! Choose a location that works best for you and sign-up with your friends."
               detail="Click for more details"
-              path="/detailedPost"
+              path="/detailed"
             />
           </ul>
         </div>
