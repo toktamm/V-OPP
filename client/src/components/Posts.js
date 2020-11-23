@@ -15,7 +15,6 @@ function Posts(props) {
               src={postData.src}
               title={postData.title}
               text={postData.text}
-              detail={postData.detail}
             />
           </div>
         );

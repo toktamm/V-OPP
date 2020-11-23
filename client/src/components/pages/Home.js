@@ -10,21 +10,18 @@ const initialPostData = [
     title: "Earth Day Community Clean-Ups",
     text:
       "On Earth Day join hundreds of high school students to clean Toronto together! Choose a location that works best for you and sign-up with your friends.On Earth Day join hundreds of high school students to clean Toronto together! Choose a location that works best for you and sign-up with your friends.",
-    detail: "Click for more details",
   },
   {
     src: "images/img-4.jpg",
     title: "Wildlife Care",
     text:
       "Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea ",
-    detail: "Click for more details",
   },
   {
     src: "images/img-8.jpg",
     title: "Volunteer Mentor",
     text:
       "Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip. Sea lettuce lettuce water.",
-    detail: "Click for more details",
   },
 ];
 
@@ -36,7 +33,6 @@ function Home() {
       src: "images/img-9.jpg",
       title: "Earth Day Community Clean-Ups",
       text: "",
-      detail: "Click for more details",
     };
 
     setPostData([newPost, ...postData]);
