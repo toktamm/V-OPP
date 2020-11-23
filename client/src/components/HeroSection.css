@@ -1,0 +1,24 @@
+.hero-container {
+  /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+
+.hero-container > h3 {
+  color: #000000;
+  font-size: 50px;
+  margin-top: -50px;
+}
+
+.hero-container > p {
+  margin-top: 8px;
+  color: #000000;
+  font-size: 32px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
