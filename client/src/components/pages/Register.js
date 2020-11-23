@@ -25,6 +25,7 @@ export default function Register() {
     event.preventDefault();
   }
 
+  
 
   return <div className="bg">
   <div className="Register">
@@ -92,3 +93,4 @@ export default function Register() {
     </div>
   </div>
 }
+
