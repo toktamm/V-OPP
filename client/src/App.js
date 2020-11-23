@@ -7,6 +7,8 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Detailed from "./components/pages/Detailed";
+import Findpage from "./components/pages/Findpage";
+import Postpage from "./components/pages/Postpage";
 
 import "./App.css";
 
@@ -57,6 +59,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/detailed" component={Detailed} />
+          <Route path="/findpage" component={Findpage} />
+          <Route path="/postpage" component={Postpage} />
         </Switch>
       </Router>
     </>
