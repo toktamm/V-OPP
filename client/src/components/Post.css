@@ -35,15 +35,18 @@ h1 {
 }
 
 .posts__item__link {
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
-  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-  border-radius: 10px;
-  overflow: hidden;
   text-decoration: none;
+}
+
+.posts__volunteer__btn {
+  color: #fff;
+  background-color: #2998fe;
+  border: none;
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-top: 5%;
 }
 
 .posts__item__pic-wrap {
@@ -68,22 +71,19 @@ h1 {
 }
 
 .posts__item__info {
-  padding: 20px 20px 20px;
+  padding: 0px 20px;
   padding-left: 52%;
 }
 
 .posts__item__title {
   color: #000000;
   font-size: 25px;
-  padding-bottom: 25px;
-  /* line-height: 50px; */
 }
 
 .posts__item__text {
   color: #252e48;
   font-size: 16px;
   line-height: 24px;
-  padding-bottom: 25px;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -91,7 +91,5 @@ h1 {
 .posts__item__detail {
   color: #000000;
   font-size: 15px;
-  padding-bottom: 25px;
   text-decoration: underline;
-  /* line-height: 50px; */
 }
