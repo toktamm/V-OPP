@@ -1,6 +1,7 @@
 import React from "react";
 import "../../App.css";
 import Post from "../Post";
+import Map from "../Map";
 
 
 export default function Detailed() {
@@ -17,6 +18,7 @@ export default function Detailed() {
             detail="Click for more details"
             path="/detailed"
           />
+          <Map />
         </ul>
       </div>
     </div>
