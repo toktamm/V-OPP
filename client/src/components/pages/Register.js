@@ -5,11 +5,13 @@ import "./Register.css";
 import "../../App.css";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUserName] = useState("");
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -19,6 +21,19 @@ export default function Register() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    let data = {
+      email,
+      password,
+      first_name,
+      last_name,
+      address,
+      phone
+    }
+    return axios.post("http://localhost:3001/api/users", data).then((respond) =>{
+      console.log("this is respond: " ,respond)
+    }).catch((err) => {
+      console.log("Got an error: ", err)
+    })  
   }
 
   return (
@@ -26,12 +41,22 @@ export default function Register() {
       <div className="Register">
         <Form onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="username">
-            <Form.Label>User name</Form.Label>
+            <Form.Label>First name</Form.Label>
             <Form.Control
               autoFocus
-              type="username"
-              value={username}
-              onChange={(e) => setUserName(e.target.value)}
+              type="firstname"
+              value={first_name}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+          </Form.Group> 
+
+          <Form.Group size="lg" controlId="username">
+            <Form.Label>Last name</Form.Label>
+            <Form.Control
+              autoFocus
+              type="lastname"
+              value={last_name}
+              onChange={(e) => setLastname(e.target.value)}
             />
           </Form.Group>
 
@@ -87,3 +112,4 @@ export default function Register() {
     </div>
   );
 }
+

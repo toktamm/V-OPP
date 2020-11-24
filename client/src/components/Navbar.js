@@ -15,7 +15,8 @@ function Navbar() {
             volunteer.app
           </Link>
           <div className="menu-icon" onClick={handleClick}></div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>  
+                    
             <li className="nav-item">
               <Link to="/login" className="nav-links">
                 login

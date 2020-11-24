@@ -36,18 +36,20 @@ module.exports = ({
             first_name,
             last_name,
             email,
+            phone,
+            address,
             password
         } = req.body;
-
+        console.log("req.body is ", req.body)
         getUserByEmail(email)
             .then(user => {
-
                 if (user) {
+                    console.log("This is user:", user)
                     res.json({
                         msg: 'Sorry, a user account with this email already exists'
                     });
                 } else {
-                    return addUser(first_name, last_name, email, password)
+                    return addUser(first_name, last_name, email, phone, address, password)
                 }
 
             })

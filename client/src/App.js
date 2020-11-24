@@ -8,6 +8,7 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Findpage from "./components/pages/Findpage";
 import Postpage from "./components/pages/Postpage";
+import UserProvider from "./provider/UserProvider";
 
 import "./App.css";
 
@@ -61,6 +62,8 @@ function App() {
           <Route path="/postpage" component={Postpage} />
         </Switch>
       </Router>
+      <UserProvider>
+    </UserProvider>
     </>
   );
 }
