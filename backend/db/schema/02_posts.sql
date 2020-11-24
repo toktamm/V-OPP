@@ -2,8 +2,10 @@ DROP TABLE IF EXISTS posts CASCADE;
 
 CREATE TABLE posts(
     id SERIAL PRIMARY KEY NOT NULL,
+    category VARCHAR(255) NOT NULL,
     title VARCHAR(255) NOT NULL,
     organization VARCHAR(255) NOT NULL,
+    positions_available INTEGER,
     description TEXT,
     thumbnail_photo_url VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
