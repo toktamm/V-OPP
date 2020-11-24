@@ -16,7 +16,6 @@ function Navbar() {
           </Link>
           <div className="menu-icon" onClick={handleClick}></div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>  
-                    
             <li className="nav-item">
               <Link to="/login" className="nav-links">
                 login
@@ -28,6 +27,7 @@ function Navbar() {
                 register
               </Link>
             </li>
+
           </ul>
         </div>
       </nav>
