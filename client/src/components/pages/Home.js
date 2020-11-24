@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
+import Categories from "../Categories";
 import FindPost from "../FindPost";
 import HeroSection from "../HeroSection";
 import Posts from "../Posts";
@@ -41,6 +42,7 @@ function Home() {
     <>
       <FindPost />
       <HeroSection />
+      <Categories />
       <Posts postData={postData} />
     </>
   );
