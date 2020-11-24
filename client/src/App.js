@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import Detailed from "./components/pages/Detailed";
 import Findpage from "./components/pages/Findpage";
 import Postpage from "./components/pages/Postpage";
 import UserProvider from "./provider/UserProvider";
@@ -58,6 +59,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/detailed" component={Detailed} />
           <Route path="/findpage" component={Findpage} />
           <Route path="/postpage" component={Postpage} />
         </Switch>
