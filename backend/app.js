@@ -10,6 +10,8 @@ var cors = require("cors");
 
 const db = require("./db");
 const dbHelpers = require("./helpers/dbHelpers")(db);
+const cookieSession = require("cookie-session");
+
 
 var app = express();
 app.use(cors());
