@@ -16,6 +16,12 @@ const cookieSession = require("cookie-session");
 var app = express();
 app.use(cors());
 
+//encrypted cookies
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1", "key2"],
+}));
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,11 +33,6 @@ app.use("/", indexRouter);
 app.use("/api/users", usersRouter(dbHelpers));
 app.use("/api/posts", postsRouter(dbHelpers));
 
-//encrypted cookies
-app.use(cookieSession({
-  name: 'session',
-  keys: ["key1", "key2"],
-}));
 
 
 module.exports = app;
