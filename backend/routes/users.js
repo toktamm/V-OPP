@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { getPostsByUsers } = require("../helpers/dataHelpers");
 
+
+// hashed passwords
+const bcrypt = require('bcrypt');
+const salt = bcrypt.genSaltSync(12);
+
+
 module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
     /* GET users listing. */
     router.get("/", (req, res) => {
