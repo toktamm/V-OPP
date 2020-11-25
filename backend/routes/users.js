@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const { getPostsByUsers } = require("../helpers/dataHelpers");
+var jwt = require('jsonwebtoken');
+
 // const cookieSession = require("cookie-session");
 
 
@@ -72,8 +74,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
 
 
-    // THIS IS WHERE REGISTER POST IS COMING FROM FRONT_END
-    // this is a POST request to api/users/
+
 
     router.post("/", (req, res) => {
 
@@ -85,9 +86,8 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
             address
         } = req.body;
 
-        // this is your user registration form data
+        // user registration form data
         console.log("req.body is ", req.body);
-        // what if the user already exists?
 
         // hash passwords
 
@@ -95,7 +95,8 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
         // add all the new user info to the db
 
-        // getUserByEmail is working
+
+
         getUserByEmail(email)
             .then(user => {
 
@@ -109,7 +110,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
                 } else {
                     // store hashsed password
                     password = bcrypt.hashSync(password, salt);
-                    console.log("This is a new user with hashed password = ", password)
+                    // console.log("This is a new user with hashed password = ", password)
 
                     // addUser works
                     return addUser(first_name, last_name, email, password, phone, address)
@@ -117,27 +118,16 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
             })
             .then(newUser => {
-                // PMONEHING AT A TIME - ALWAYS
-                // newUser is the new user that is added to the database
-                // what do you need from this new user to add a cookie?
-                // you need this newUser id for cookie
-                // where is that id?
-                // I don't know
-                // how can we check?
-                // why manually?
-                // I don't know
-                // let's console.log!
-                // sounds good
+
                 console.log("new user id: ", newUser.id);
-                // good, that worked! 
-                // new user id is newUser.id
-                // STUCK HERE
-                // cookie is not getting added
-                req.session["userId"] = newUser.id;
-                console.log("cookie user id: ", req.session.userId);
 
+                // req.session.userId = newUser.id;
+                // console.log("req.session.userId is: ", req.session.userId);
 
-                res.json(newUser)
+                const token = jwt.sign({ email: newUser.email }, 'secretKey');
+                let result = { user: newUser, token: token };
+
+                res.json(result)
             })
             .catch(err => res.json({
                 error: err.message
@@ -169,10 +159,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
 
 
-
-
     // login
-
 
     const login = function(email, password) {
         return getUserByEmail(email)
@@ -197,7 +184,8 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
                 } else if (req.body.email === "admin@volunteer.com") {
                     res.redirect("/admin");
                 } else {
-                    req.session.userId = user.id;
+
+                    // req.session.userId = user.id;
                     res.redirect("/");
                 }
             })
