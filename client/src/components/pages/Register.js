@@ -44,26 +44,26 @@ export default function Register() {
     <div className="bg">
       <div className="Register">
         <Form onSubmit={handleSubmit}>
-        <Form.Row>
-          <Form.Group  as={Col} size="lg" controlId="username">
-            <Form.Label>First name</Form.Label>
-            <Form.Control
-              autoFocus
-              type="firstname"
-              value={first_name}
-              onChange={(e) => setFirstname(e.target.value)}
-            />
-          </Form.Group>
+          <Form.Row>
+            <Form.Group as={Col} size="lg" controlId="username">
+              <Form.Label>First name</Form.Label>
+              <Form.Control
+                autoFocus
+                type="firstname"
+                value={first_name}
+                onChange={(e) => setFirstname(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col}  size="lg" controlId="username">
-            <Form.Label>Last name</Form.Label>
-            <Form.Control
-              autoFocus
-              type="lastname"
-              value={last_name}
-              onChange={(e) => setLastname(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group as={Col} size="lg" controlId="username">
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                autoFocus
+                type="lastname"
+                value={last_name}
+                onChange={(e) => setLastname(e.target.value)}
+              />
+            </Form.Group>
           </Form.Row>
 
           <Form.Group size="lg" controlId="email">
@@ -102,7 +102,6 @@ export default function Register() {
               onChange={(e) => setAddress(e.target.value)}
             />
           </Form.Group>
-        
 
           <Button block size="lg" type="submit" disabled={!validateForm()}>
             Register
