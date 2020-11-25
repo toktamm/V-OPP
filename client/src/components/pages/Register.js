@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 import "./Register.css";
 import "../../App.css";
 import { NavLink } from "react-router-dom";
@@ -43,7 +44,8 @@ export default function Register() {
     <div className="bg">
       <div className="Register">
         <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="username">
+        <Form.Row>
+          <Form.Group  as={Col} size="lg" controlId="username">
             <Form.Label>First name</Form.Label>
             <Form.Control
               autoFocus
@@ -53,7 +55,7 @@ export default function Register() {
             />
           </Form.Group>
 
-          <Form.Group size="lg" controlId="username">
+          <Form.Group as={Col}  size="lg" controlId="username">
             <Form.Label>Last name</Form.Label>
             <Form.Control
               autoFocus
@@ -62,9 +64,10 @@ export default function Register() {
               onChange={(e) => setLastname(e.target.value)}
             />
           </Form.Group>
+          </Form.Row>
 
           <Form.Group size="lg" controlId="email">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Email </Form.Label>
             <Form.Control
               autoFocus
               type="email"
@@ -73,12 +76,12 @@ export default function Register() {
             />
           </Form.Group>
 
-          <Form.Group size="lg" controlId="address">
-            <Form.Label>Address</Form.Label>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Password</Form.Label>
             <Form.Control
-              type="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
@@ -91,14 +94,15 @@ export default function Register() {
             />
           </Form.Group>
 
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
+          <Form.Group size="lg" controlId="address">
+            <Form.Label>Address</Form.Label>
             <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </Form.Group>
+        
 
           <Button block size="lg" type="submit" disabled={!validateForm()}>
             Register
