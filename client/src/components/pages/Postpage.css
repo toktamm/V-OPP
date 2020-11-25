@@ -1,0 +1,24 @@
+
+.PostPage {
+  height:170vh
+}
+
+
+Form {
+  float:center;
+  margin:0% 11% 0% 13%;
+} 
+
+.imgPost {
+  margin: 2% 11% 2% 13%;
+  height: 250px;
+  width: 75%;
+} 
+
+.input{
+  margin-bottom: 15px;
+} 
+
+.postButton{
+  margin-top: 20px;
+}
