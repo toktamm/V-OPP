@@ -52,6 +52,9 @@ function Posts() {
                 />
                 <div className="posts__item__info">
                   <h5 className="posts__item__title">{key.title}</h5>
+                  <h6 style={{ textDecoration: "underline" }}>
+                    {key.organization}
+                  </h6>
                   <h5 className="posts__item__text">
                     {key.description.length > 200
                       ? key.description.substring(0, 200) + " ..."
