@@ -27,13 +27,16 @@ export default function Register() {
       first_name,
       last_name,
       address,
-      phone
-    }
-    return axios.post("http://localhost:3001/api/users", data).then((respond) =>{
-      console.log("this is respond: " ,respond)
-    }).catch((err) => {
-      console.log("Got an error: ", err)
-    })  
+      phone,
+    };
+    return axios
+      .post("http://localhost:3001/api/users", data)
+      .then((respond) => {
+        console.log("this is respond: ", respond);
+      })
+      .catch((err) => {
+        console.log("Got an error: ", err);
+      });
   }
 
   return (
@@ -48,7 +51,7 @@ export default function Register() {
               value={first_name}
               onChange={(e) => setFirstname(e.target.value)}
             />
-          </Form.Group> 
+          </Form.Group>
 
           <Form.Group size="lg" controlId="username">
             <Form.Label>Last name</Form.Label>
@@ -112,4 +115,3 @@ export default function Register() {
     </div>
   );
 }
-

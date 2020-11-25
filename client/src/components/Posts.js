@@ -1,27 +1,77 @@
-import React from "react";
-import Post from "./Post";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+// import Post from "./Post";
+import { Link } from "react-router-dom";
 
 import "./Posts.css";
 
-function Posts(props) {
-  const { postData } = props;
+// function Posts(props) {
+//   const { postData } = props;
 
-  const posts = postData
-    ? postData.map((postData, index) => {
+//   const posts = postData
+//     ? postData.map((postData, index) => {
+//         return (
+//           <div className="posts__container">
+//             <Post
+//               key={index}
+//               src={postData.src}
+//               title={postData.title}
+//               text={postData.text}
+//             />
+//           </div>
+//         );
+//       })
+//     : "There is no post here";
+
+//   return [posts];
+// }
+
+// export default Posts;
+
+function Posts() {
+  const [postList, setpostList] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/posts").then((data) => {
+      console.log("posts ------- ", data);
+      setpostList(data.data);
+    });
+  }, []);
+  return (
+    <div className="posts__container">
+      {postList.map((key, val) => {
         return (
-          <div className="posts__container">
-            <Post
-              key={index}
-              src={postData.src}
-              title={postData.title}
-              text={postData.text}
-            />
-          </div>
+          <li className="posts__item">
+            <div className="posts__wrapper">
+              <ul className="posts__items"></ul>
+              <figure className="posts__item__pic-wrap">
+                <img
+                  className="posts__item__img"
+                  src={key.thumbnail_photo_url}
+                  alt="description"
+                />
+                <div className="posts__item__info">
+                  <h5 className="posts__item__title">{key.title}</h5>
+                  <h5 className="posts__item__text">
+                    {key.description.length > 200
+                      ? key.description.substring(0, 200) + " ..."
+                      : key.description}
+                  </h5>
+                  <Link
+                    to="/detailed"
+                    className="posts__item__link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <button className="posts__volunteer__btn">volunteer</button>
+                  </Link>
+                </div>
+              </figure>
+            </div>
+          </li>
         );
-      })
-    : "There is no post here";
-
-  return [posts];
+      })}
+    </div>
+  );
 }
 
 export default Posts;
