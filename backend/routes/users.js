@@ -1,67 +1,60 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {
-    getPostsByUsers
-} = require('../helpers/dataHelpers');
+const { getPostsByUsers } = require("../helpers/dataHelpers");
 
-module.exports = ({
-    getUsers,
-    getUserByEmail,
-    addUser,
-    getUsersPosts
-}) => {
-    /* GET users listing. */
-    router.get('/', (req, res) => {
-        getUsers()
-            .then((users) => res.json(users))
-            .catch((err) => res.json({
-                error: err.message
-            }));
-    });
+module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
+  /* GET users listing. */
+  router.get("/", (req, res) => {
+    getUsers()
+      .then((users) => res.json(users))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
-    router.get('/posts', (req, res) => {
-        getUsersPosts()
-            .then((usersPosts) => {
-                const formattedPosts = getPostsByUsers(usersPosts);
-                res.json(formattedPosts);
-            })
-            .catch((err) => res.json({
-                error: err.message
-            }));
-    });
+  router.get("/posts", (req, res) => {
+    getUsersPosts()
+      .then((usersPosts) => {
+        const formattedPosts = getPostsByUsers(usersPosts);
+        res.json(formattedPosts);
+      })
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
-    router.post('/', (req, res) => {
-
-        const {
+  router.post("/", (req, res) => {
+    const { first_name, last_name, email, phone, address, password } = req.body;
+    console.log("req.body is ", req.body);
+    getUserByEmail(email)
+      .then((user) => {
+        if (user) {
+          console.log("This is user:", user);
+          res.json({
+            msg: "Sorry, a user account with this email already exists",
+          });
+        } else {
+          return addUser(
             first_name,
             last_name,
             email,
             phone,
             address,
             password
-        } = req.body;
-        console.log("req.body is ", req.body)
-        getUserByEmail(email)
-            .then(user => {
-                if (user) {
-                    console.log("This is user:", user)
-                    res.json({
-                        msg: 'Sorry, a user account with this email already exists'
-                    });
-                } else {
-                    return addUser(first_name, last_name, email, phone, address, password)
-                }
+          );
+        }
+      })
+      .then((newUser) => res.json(newUser))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
-            })
-            .then(newUser => res.json(newUser))
-            .catch(err => res.json({
-                error: err.message
-            }));
-
-    })
-
-    return router;
+  return router;
 };
-
-
-
