@@ -25,7 +25,6 @@ export default function PostPage() {
   const [start_date, setStartDay] = useState("");
   const [requirements, setRequirement] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
-  const [active, setActive] = useState("");
 
   
 
@@ -45,7 +44,6 @@ export default function PostPage() {
       start_date,
       requirements,
       additional_info,
-      active,
     }
     return axios.post("http://localhost:3001/api/posts", data).then((respond) =>{
       console.log("this is respond: " ,respond)
@@ -58,7 +56,7 @@ export default function PostPage() {
       <section className="PostPage">
 
         <FindPost />         
-        <Image className = "imgPost" src="images/img-4.jpg"  />
+        <Image className = "imgPost" src="images/img-5.jpg"  />
         <Form onSubmit={handleSubmit}>
         <Form.Row>
           <Form.Group size="lg" as={Col} controlId="title">
@@ -235,12 +233,6 @@ export default function PostPage() {
             type="thumbnail_photo_url"
             value={thumbnail_photo_url}
             onChange={(e) => setImg(e.target.value)}/>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Activate" 
-             value={active}
-             onChange={(e) => setActive(e.target.value)}/>
           </Form.Group>
 
 

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
-module.exports = ({ getPosts }) => {
+module.exports = ({ getPosts, addPost }) => {
   router.get("/", (req, res) => {
     getPosts()
       .then((posts) => res.json(posts))
@@ -11,6 +10,62 @@ module.exports = ({ getPosts }) => {
         })
       );
   });
+  router.post("/", (req, res) => {
+    const {
+      user_id,
+      category,
+      title,
+      organization,
+      positions_available,
+      description,
+      thumbnail_photo_url,
+      country,
+      street,
+      city,
+      province,
+      post_code,
+      date_posted,
+      start_date,
+      requirements,
+      additional_info,
+    } = req.body;
+    console.log("req.body is ", req.body);
 
+    
+    getUserByEmail(email)
+      .then((user) => {
+        if (user) {
+          console.log("This is user:", user);
+          res.json({
+            msg: "Sorry, a user account with this email already exists",
+          });
+        } else {
+          return addPost(
+            user_id,
+            category,
+            title,
+            organization,
+            positions_available,
+            description,
+            thumbnail_photo_url,
+            country,
+            street,
+            city,
+            province,
+            post_code,
+            date_posted,
+            start_date,
+            requirements,
+            additional_info
+          );
+        }
+      })
+      .then((newPost) => res.json(newPost))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
   return router;
 };

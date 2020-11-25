@@ -64,7 +64,8 @@ function App() {
           <Route path="/postpage" component={Postpage} />
         </Switch>
       </Router>
-      <UserProvider></UserProvider>
+      <UserProvider>
+    </UserProvider>
     </>
   );
 }
