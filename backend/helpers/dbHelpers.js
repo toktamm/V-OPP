@@ -22,11 +22,11 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const addUser = (firstName, lastName, email, phone, address, password) => {
-    const query = {
-      text: `INSERT INTO users (first_name, last_name, email, phone, address, password) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-      values: [firstName, lastName, email, phone, address, password],
-    };
+  const addUser = (firstName, lastName, email, password, phone, address) => {
+      const query = {
+          text: `INSERT INTO users (first_name, last_name, email, password, phone, address) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *` ,
+          values: [firstName, lastName, email, password, phone, address]
+      }
 
     return db
       .query(query)

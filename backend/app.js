@@ -25,4 +25,11 @@ app.use("/", indexRouter);
 app.use("/api/users", usersRouter(dbHelpers));
 app.use("/api/posts", postsRouter(dbHelpers));
 
+//encrypted cookies
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1", "key2"],
+}));
+
+
 module.exports = app;
