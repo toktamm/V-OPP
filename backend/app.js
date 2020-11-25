@@ -10,7 +10,7 @@ const db = require('./db');
 const dbHelpers = require('./helpers/dbHelpers')(db);
 
 var app = express();
-app.use(cors())
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,6 +21,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/api/users', usersRouter(dbHelpers));
+
+
+//encrypted cookies
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1", "key2"],
+}));
 
 
 module.exports = app;

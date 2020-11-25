@@ -29,6 +29,14 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+
+//encrypted cookies
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1", "key2"],
+}));
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
