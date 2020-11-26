@@ -10,7 +10,7 @@ import axios from "axios";
 import FindPost from "../FindPost";
 
 export default function PostPage() {
-  const [categories, setCategories] = useState("");
+  const [category, setCategories] = useState("");
   const [title, setTitle] = useState("");
   const [organization, setOrganization] = useState("");
   const [positions_available, setPositionsAvailable] = useState("");
@@ -24,11 +24,11 @@ export default function PostPage() {
   const [start_date, setStartDay] = useState("");
   const [requirements, setRequirement] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
-  const [active, setActive] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
     let data = {
+      category,
       title,
       organization,
       positions_available,
@@ -42,7 +42,6 @@ export default function PostPage() {
       start_date,
       requirements,
       additional_info,
-      active,
     };
     return axios
       .post("http://localhost:3001/api/posts", data)
@@ -57,7 +56,7 @@ export default function PostPage() {
   return (
     <section className="PostPage">
       <FindPost />
-      <Image className="imgPost" src="images/img-4.jpg" />
+      <Image className="imgPost" src="images/img-5.jpg" />
       <Form onSubmit={handleSubmit}>
         <Form.Row>
           <Form.Group size="lg" as={Col} controlId="title">
@@ -160,7 +159,7 @@ export default function PostPage() {
               defaultValue="Choose..."
               autoFocus
               type="categories"
-              value={categories}
+              value={category}
               onChange={(e) => setCategories(e.target.value)}
             >
               <option>Choose...</option>
@@ -181,7 +180,7 @@ export default function PostPage() {
           <Form.Group as={Col} controlId="date_posted">
             <Form.Label>Date Posted</Form.Label>
             <Form.Control
-              placeholder="Year/Month/date"
+              placeholder="Year-Month-date"
               autoFocus
               type="date_posted"
               value={date_posted}
@@ -192,7 +191,7 @@ export default function PostPage() {
           <Form.Group as={Col} controlId="start_date">
             <Form.Label>Start Date</Form.Label>
             <Form.Control
-              placeholder="Year/Month/date"
+              placeholder="Year-Month-date"
               autoFocus
               type="start_date"
               value={start_date}
@@ -239,11 +238,6 @@ export default function PostPage() {
           />
         </Form.Group>
 
-        {/* <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Activate" 
-             value={active}
-             onChange={(e) => setActive(e.target.value)}/>
-          </Form.Group> */}
 
         <Button className="postButton" block size="lg" type="submit">
           Post Opportunity
