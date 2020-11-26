@@ -241,11 +241,7 @@ export default function PostPage() {
           />
         </Form.Group>
 
-<<<<<<< HEAD
-        <Button className="postButton" block size="lg" type="submit" >
-=======
         <Button className="postButton" block size="lg" type="submit">
->>>>>>> feature/category
           Post Opportunity
         </Button>
       </Form>
