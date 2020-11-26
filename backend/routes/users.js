@@ -4,14 +4,6 @@ const router = express.Router();
 const { getPostsByUsers } = require("../helpers/dataHelpers");
 var jwt = require('jsonwebtoken');
 
-// const cookieSession = require("cookie-session");
-
-
-// encrypted cookies
-// app.use(cookieSession({
-//     name: 'session',
-//     keys: ["key1", "key2"],
-//   }));
 
 
 // hashed passwords
@@ -74,7 +66,8 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
 
 
-
+    // THIS IS WHERE REGISTER POST IS COMING FROM FRONT_END
+    // this is a POST request to api/users/
 
     router.post("/", (req, res) => {
 
@@ -89,13 +82,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
         // user registration form data
         console.log("req.body is ", req.body);
 
-        // hash passwords
-
-        // apply cookie session
-
         // add all the new user info to the db
-
-
 
         getUserByEmail(email)
             .then(user => {
@@ -104,7 +91,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
                     console.log("This is user:", user);
 
-                    res.json({
+                   return res.json({
                         msg: "Sorry, a user account with this email already exists",
                     });
                 } else {
@@ -121,13 +108,11 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
                 console.log("new user id: ", newUser.id);
 
-                // req.session.userId = newUser.id;
-                // console.log("req.session.userId is: ", req.session.userId);
-
                 const token = jwt.sign({ email: newUser.email }, 'secretKey');
                 let result = { user: newUser, token: token };
 
                 res.json(result)
+                res.redirect("/");
             })
             .catch(err => res.json({
                 error: err.message
@@ -138,22 +123,22 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
 
 
-    // this is a POST request to api/users/register
+    // // this is a POST request to api/users/register
 
-    router.post("/register", (req, res) => {
+    // router.post("/register", (req, res) => {
 
-        const { first_name, last_name, email, password, phone, address } = req.body;
-        register(first_name, last_name, email, password, phone, address, database)
-            .then(user => {
-                if (!user) {
-                    res.redirect("/error_message");
-                    return;
-                }
-                req.session.userId = user.id;
-                res.redirect("/");
-            })
-            .catch((error) => res.send(error.message));
-    });
+    //     const { first_name, last_name, email, password, phone, address } = req.body;
+    //     register(first_name, last_name, email, password, phone, address, database)
+    //         .then(user => {
+    //             if (!user) {
+    //                 res.redirect("/error_message");
+    //                 return;
+    //             }
+    //             req.session.userId = user.id;
+    //             res.redirect("/");
+    //         })
+    //         .catch((error) => res.send(error.message));
+    // });
 
 
 
@@ -164,37 +149,55 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
     const login = function(email, password) {
         return getUserByEmail(email)
             .then(user => {
-                // console.log('user in login is: ', user)
-                if (bcrypt.compareSync(password, user.password)) {
-                    return user;
+                if (user){
+                    console.log('user in login is: ', user)
+                    if (bcrypt.compareSync(password, user.password)) {
+                        return user;
+                    }
+                } else {
+                    return null;
                 }
-                return null;
+            })
+            .catch(error => {
+                console.log(`err on login function :${error}`)
+                res.json({error: error.message})
             });
     }
 
 
     router.post("/login", (req, res) => {
         const { email, password } = req.body;
-        // console.log('req body inside post login: ', req.body)
+        console.log('req body inside post login: ', req.body)
         login(email, password)
             .then(user => {
                 // console.log('user inside post login .then: ', user)
                 if (!user) {
-                    return;
+                    res.json("Failed login");
                 } else if (req.body.email === "admin@volunteer.com") {
-                    res.redirect("/admin");
+                    const token = jwt.sign({ email: user.email }, 'secretKey');
+                    let result = { user: user, token: token };
+                    console.log(`logged in admin: ${user}`)
+                    return res.json(result)
                 } else {
 
-                    // req.session.userId = user.id;
-                    res.redirect("/");
+                    const token = jwt.sign({ email: user.email }, 'secretKey');
+                    let result = { user: user, token: token };
+                    console.log(`logged in normal user: ${user}`)
+                    return res.json(result)
                 }
             })
-            .catch(error => res.redirect("/error_message2"));
+            .catch(error => {
+                console.log(`err on login :${error}`)
+                res.json({error: error.message})
+            });
     });
 
 
     router.post("/logout", (req, res) => {
-        req.session.userId = null;
+
+        const token = jwt.sign({ email: newUser.email }, 'secretKey');
+
+
         res.redirect("/");
     });
 

@@ -8,11 +8,6 @@ var app = require('../app');
 var debug = require('debug')('backend:server');
 var http = require('http');
 
-
-const cookieSession = require('cookie-session');
-
-
-
 /**
  * Get port from environment and store in Express.
  */
@@ -33,13 +28,6 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-
-//encrypted cookies
-app.use(cookieSession({
-  name: 'session',
-  keys: ["key1", "key2"],
-}));
 
 
 /**
@@ -102,5 +90,4 @@ function onListening() {
   debug('Listening on ' + bind);
   console.log(`Listening on port ${port}.`);
 }
-
 
