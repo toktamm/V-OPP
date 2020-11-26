@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Alert from 'react-bootstrap/Alert'
 import "./Login.css";
 import "../../App.css";
 import { NavLink, Link, useHistory } from "react-router-dom";
@@ -40,7 +41,13 @@ export default function Login(props) {
           props.setLoggedIn(true)
           history.push('/')
         } else {
-          setErrorMsg('invalid login')
+          setErrorMsg([
+           'danger'
+          ].map((variant, idx) => (
+            <Alert key={idx} variant={variant}>
+           Invalid email or password
+            </Alert>
+          )))
           history.push('/login')
         }
       })
