@@ -43,7 +43,7 @@ function Home() {
       <FindPost />
       <HeroSection />
       <Categories />
-      <Posts postData={postData} />
+      <Posts />
     </>
   );
 }
