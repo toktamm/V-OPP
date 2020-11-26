@@ -1,14 +1,31 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
+  const history = useHistory()
+
   const [click, setClick] = useState(false);
+
+  // const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(()=>{
+    let token = localStorage.getItem('token')
+    // props.setLoggedIn(false)
+    token ? props.setLoggedIn(true) : props.setLoggedIn(false)
+  },[])
 
   const handleClick = () => setClick(!click);
 
+  const logout = ()=>{
+    localStorage.removeItem('token')
+    props.setLoggedIn(false)
+    history.push('/')
+  }
+
   return (
     <>
+    {props.loggedIn}
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
@@ -16,7 +33,8 @@ function Navbar() {
           </Link>
           <div className="menu-icon" onClick={handleClick}></div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>  
-                    
+          { !props.loggedIn ? 
+          <>        
             <li className="nav-item">
               <Link to="/login" className="nav-links">
                 login
@@ -28,6 +46,11 @@ function Navbar() {
                 register
               </Link>
             </li>
+            </> :
+            <li>
+              <button onClick={logout} className="find-btn"> Logout </button>
+            </li>
+            }
           </ul>
         </div>
       </nav>

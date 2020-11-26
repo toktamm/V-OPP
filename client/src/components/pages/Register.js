@@ -4,17 +4,19 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import "./Register.css";
 import "../../App.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
-export default function Register() {
+export default function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [first_name, setFirstname] = useState("");
   const [last_name, setLastname] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+
+  const history = useHistory()
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -23,20 +25,23 @@ export default function Register() {
   function handleSubmit(event) {
     event.preventDefault();
     let data = {
-      email,
-      password,
       first_name,
       last_name,
-      address,
+      email,
+      password,
       phone,
+      address
     };
     return axios
       .post("http://localhost:3001/api/users", data)
-      .then((respond) => {
-        console.log("this is respond: ", respond);
+      .then((res) => {
+        console.log("this is response: ", res);
+        localStorage.setItem("token", res.data.token)
+        props.setLoggedIn(true)
+        history.push("/")
       })
       .catch((err) => {
-        console.log("Got an error: ", err);
+        console.log("Received an error: ", err);
       });
   }
 
@@ -103,15 +108,16 @@ export default function Register() {
             />
           </Form.Group>
 
+          
           <Button block size="lg" type="submit" disabled={!validateForm()}>
             Register
-          </Button>
+          </Button>          
           <NavLink
             className="navbar-item"
             activeClassName="is-active"
             to="/login"
           >
-            Already a member? Login Now !
+            Already a member? Login Now!
           </NavLink>
         </Form>
       </div>

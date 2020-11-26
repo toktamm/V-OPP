@@ -11,10 +11,10 @@ var cors = require("cors");
 
 const db = require("./db");
 const dbHelpers = require("./helpers/dbHelpers")(db);
-const cookieSession = require("cookie-session");
 
 var app = express();
 app.use(cors());
+
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -28,12 +28,5 @@ app.use("/api/users", usersRouter(dbHelpers));
 app.use("/api/posts", postsRouter(dbHelpers));
 app.use("/api/categories", categoriesRouter(dbHelpers));
 
-//encrypted cookies
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["key1", "key2"],
-  })
-);
 
 module.exports = app;
