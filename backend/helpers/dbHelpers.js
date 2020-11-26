@@ -144,7 +144,7 @@ module.exports = (db) => {
 
   const getPosts = () => {
     const query = {
-      text: "SELECT * FROM posts ORDER BY start_date DESC;",
+      text: "SELECT * FROM posts ORDER BY date_posted DESC;",
     };
 
     return db
