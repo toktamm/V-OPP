@@ -66,7 +66,7 @@ function Arts() {
       {console.log("This is postList:      ", postList)}
       <div className="posts__container">
         {postList
-          .filter((category) => category.category === "Arts")
+          .filter((category) => category.category === "Arts/Culture")
           .map((filteredCategory) => (
             // <h1>{filteredCategory.title}</h1>
             <li className="posts__item">

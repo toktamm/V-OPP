@@ -66,7 +66,7 @@ function Youth() {
       {console.log("This is postList:      ", postList)}
       <div className="posts__container">
         {postList
-          .filter((category) => category.category === "Youth")
+          .filter((category) => category.category === "Children/Youth")
           .map((filteredCategory) => (
             // <h1>{filteredCategory.title}</h1>
             <li className="posts__item">
