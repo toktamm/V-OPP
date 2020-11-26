@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Postpage.css";
+import {Link} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -238,10 +239,11 @@ export default function PostPage() {
           />
         </Form.Group>
 
-
+        <Link to ="/">
         <Button className="postButton" block size="lg" type="submit">
           Post Opportunity
         </Button>
+        </Link>
       </Form>
     </section>
   );
