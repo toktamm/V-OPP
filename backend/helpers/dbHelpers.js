@@ -222,7 +222,8 @@ module.exports = (db) => {
 
   const getCategories = () => {
     const query = {
-      text: "SELECT * FROM posts WHERE category = $1;",
+      // text: "SELECT * FROM posts WHERE category = 'Community';",
+      text: "SELECT * FROM posts;",
     };
 
     return db
