@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Postpage.css";
-import {Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -25,7 +25,7 @@ export default function PostPage() {
   const [start_date, setStartDay] = useState("");
   const [requirements, setRequirement] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
-  const history = useHistory()
+  const history = useHistory();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -49,7 +49,7 @@ export default function PostPage() {
       .post("http://localhost:3001/api/posts", data)
       .then((respond) => {
         console.log("this is respond: ", respond);
-        history.push("/")
+        history.push("/");
       })
       .catch((err) => {
         console.log("Got an error: ", err);
@@ -241,7 +241,11 @@ export default function PostPage() {
           />
         </Form.Group>
 
+<<<<<<< HEAD
         <Button className="postButton" block size="lg" type="submit" >
+=======
+        <Button className="postButton" block size="lg" type="submit">
+>>>>>>> feature/category
           Post Opportunity
         </Button>
       </Form>
