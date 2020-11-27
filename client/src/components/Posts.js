@@ -34,18 +34,19 @@ function Posts(props) {
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
-      console.log("posts ------- ", data);
+      console.log("This is from Posts.js data ------- ", data);
       setpostList(data.data);
     });
   }, []);
   return (
     <>
       <div className="posts__search__container">
-        <i class="fas fa-search"></i>
+        {/* <i class="fas fa-search"></i> */}
         <input
+          className="posts__search__input"
           style={{ outline: "none" }}
           type="text"
-          placeholder="find opportunities"
+          placeholder="search opportunities"
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
@@ -89,7 +90,12 @@ function Posts(props) {
                         className="posts__item__link"
                         style={{ textDecoration: "none" }}
                       >
-                        <button onClick={() => props.setEachPostId(key.id)} className="posts__volunteer__btn">Volunteer</button>
+                        <button
+                          onClick={() => props.setEachPostId(key.id)}
+                          className="posts__volunteer__btn"
+                        >
+                          Volunteer
+                        </button>
                       </Link>
                     </div>
                   </figure>
