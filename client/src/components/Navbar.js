@@ -47,9 +47,15 @@ function Navbar(props) {
               </Link>
             </li>
             </> :
-            <li>
-              <button onClick={logout} className="find-btn"> Logout </button>
+            <>
+             <li >
+              <Link to="/profile" className="nav-links"> Profile </Link>
             </li>
+            
+            <li >
+              <Link onClick={logout} className="nav-links"> Logout </Link>
+            </li>
+            </>
             }
           </ul>
         </div>
