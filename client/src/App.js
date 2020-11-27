@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
@@ -61,20 +61,30 @@ import "./App.css";
 // };
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
-  useEffect(()=>{
-    let token = localStorage.getItem('token')
-    token ? setLoggedIn(true) : setLoggedIn(false)
-  },[])
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    token ? setLoggedIn(true) : setLoggedIn(false);
+  }, []);
   return (
     <>
       {/* <h1>TEST REFRESH</h1> */}
       <Router>
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route
+            path="/login"
+            component={() => (
+              <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            )}
+          />
+          <Route
+            path="/register"
+            component={() => (
+              <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            )}
+          />
           <Route path="/detailed" component={Detailed} />
 
           <Route path="/arts" component={Arts} />
@@ -93,8 +103,7 @@ function App() {
           <Route path="/postpage" component={Postpage} />
         </Switch>
       </Router>
-      <UserProvider>
-    </UserProvider>
+      <UserProvider></UserProvider>
     </>
   );
 }

@@ -6,3 +6,28 @@
   width: 100%;
   margin: 0 auto;
 } */
+
+input {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background: #e7e7e7;
+}
+
+/* .fas {
+  font-size: 20px;
+} */
+
+.posts__search__container {
+  display: flex;
+  justify-content: center;
+  /* background-color: #e7e7e7; */
+  border: none;
+  color: black;
+  padding: 5px 200px;
+  text-align: center;
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  font-size: 16px;
+}
