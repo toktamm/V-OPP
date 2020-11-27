@@ -30,6 +30,7 @@ import "./Posts.css";
 
 function Posts() {
   const [postList, setpostList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
@@ -38,42 +39,68 @@ function Posts() {
     });
   }, []);
   return (
-    <div className="posts__container">
-      {postList.map((key, val) => {
-        return (
-          <li className="posts__item">
-            <div className="posts__wrapper">
-              <ul className="posts__items"></ul>
-              <figure className="posts__item__pic-wrap">
-                <img
-                  className="posts__item__img"
-                  src={key.thumbnail_photo_url}
-                  alt="description"
-                />
-                <div className="posts__item__info">
-                  <h5 className="posts__item__title">{key.title}</h5>
-                  <h6 style={{ textDecoration: "underline" }}>
-                    {key.organization}
-                  </h6>
-                  <h5 className="posts__item__text">
-                    {key.description.length > 200
-                      ? key.description.substring(0, 200) + " ..."
-                      : key.description}
-                  </h5>
-                  <Link
-                    to="/detailed"
-                    className="posts__item__link"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <button className="posts__volunteer__btn">volunteer</button>
-                  </Link>
+    <>
+      <div className="posts__search__container">
+        <i class="fas fa-search"></i>
+        <input
+          style={{ outline: "none" }}
+          type="text"
+          placeholder="find opportunities"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+      </div>
+
+      <div className="posts__container">
+        {postList
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.category.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((key, val) => {
+            return (
+              <li className="posts__item">
+                <div className="posts__wrapper">
+                  <ul className="posts__items"></ul>
+                  <figure className="posts__item__pic-wrap">
+                    <img
+                      className="posts__item__img"
+                      src={key.thumbnail_photo_url}
+                      alt="description"
+                    />
+                    <div className="posts__item__info">
+                      <h5 className="posts__item__title">{key.title}</h5>
+                      <h6 style={{ textDecoration: "underline" }}>
+                        {key.organization}
+                      </h6>
+                      <h5 className="posts__item__text">
+                        {key.description.length > 200
+                          ? key.description.substring(0, 200) + " ..."
+                          : key.description}
+                      </h5>
+                      <Link
+                        to="/detailed"
+                        className="posts__item__link"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <button className="posts__volunteer__btn">
+                          volunteer
+                        </button>
+                      </Link>
+                    </div>
+                  </figure>
                 </div>
-              </figure>
-            </div>
-          </li>
-        );
-      })}
-    </div>
+              </li>
+            );
+          })}
+      </div>
+    </>
   );
 }
 
