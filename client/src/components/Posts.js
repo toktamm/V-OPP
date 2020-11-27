@@ -28,7 +28,7 @@ import "./Posts.css";
 
 // export default Posts;
 
-function Posts() {
+function Posts(props) {
   const [postList, setpostList] = useState([]);
 
   useEffect(() => {
@@ -60,12 +60,13 @@ function Posts() {
                       ? key.description.substring(0, 200) + " ..."
                       : key.description}
                   </h5>
+                  <h1></h1>
                   <Link
-                    to="/detailed"
+                    to={`/detailed/${key.id}`}
                     className="posts__item__link"
                     style={{ textDecoration: "none" }}
                   >
-                    <button className="posts__volunteer__btn">volunteer</button>
+                    <button onClick={() => props.setEachPostId(key.id)} className="posts__volunteer__btn">volunteer</button>
                   </Link>
                 </div>
               </figure>

@@ -26,7 +26,7 @@ const initialPostData = [
   },
 ];
 
-function Home() {
+function Home(props) {
   const [postData, setPostData] = useState(initialPostData);
 
   const addNewPost = (text) => {
@@ -43,7 +43,7 @@ function Home() {
       <FindPost />
       <HeroSection />
       <Categories />
-      <Posts />
+      <Posts setEachPostId={props.setEachPostId}/>
     </>
   );
 }
