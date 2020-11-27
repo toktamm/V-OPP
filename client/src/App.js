@@ -19,6 +19,7 @@ import Health from "./components/pages/categoryPages/Health";
 import Seniors from "./components/pages/categoryPages/Seniors";
 import Sports from "./components/pages/categoryPages/Sports";
 import Findpage from "./components/pages/Findpage";
+import Profile from "./components/pages/Profile";
 import Postpage from "./components/pages/Postpage";
 import UserProvider from "./provider/UserProvider";
 
@@ -63,6 +64,8 @@ import "./App.css";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [eachPostId, setEachPostId] = useState(7);
+  const [user, setUser] = useState(null)
+
   useEffect(()=>{
     let token = localStorage.getItem('token')
     token ? setLoggedIn(true) : setLoggedIn(false)
@@ -73,15 +76,11 @@ function App() {
       <Router>
         <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
-          {/* <Route path="/" exact component={Home} /> */}
           <Route path="/" exact component={() => <Home setEachPostId={setEachPostId}/>} />
-
+          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser}/>} />
           <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
-
-          {/* <Route path="/detailed/:id" component={Detailed} /> */}
-
+          <Route path="/detailed" component={Detailed} />
           <Route path="/arts" component={Arts} />
           <Route path="/animals" component={Animals} />
           <Route path="/youth" component={Youth} />
@@ -93,7 +92,7 @@ function App() {
           <Route path="/health" component={Health} />
           <Route path="/seniors" component={Seniors} />
           <Route path="/sports" component={Sports} />
-
+          <Route path="/profile" component={() => <Profile user = {user}/>} />
           <Route path="/findpage" component={Findpage} />
           <Route path="/postpage" component={Postpage} />
         </Switch>

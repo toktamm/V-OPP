@@ -38,6 +38,7 @@ export default function Register(props) {
         console.log("this is response: ", res);
         localStorage.setItem("token", res.data.token)
         props.setLoggedIn(true)
+        props.setUser(data)
         history.push("/")
       })
       .catch((err) => {

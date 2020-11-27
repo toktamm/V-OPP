@@ -231,15 +231,17 @@ export default function PostPage() {
           />
         </InputGroup>
 
-        <Form.Group>
-          <Form.File
-            id="exampleFormControlFile1"
-            label="Upload an image"
+        <InputGroup className="thumbnail_photo_url">
+          <InputGroup.Prepend>
+            <InputGroup.Text>Upload an image URL</InputGroup.Text>
+          </InputGroup.Prepend>
+          <Form.Control
+            autoFocus
             type="thumbnail_photo_url"
             value={thumbnail_photo_url}
             onChange={(e) => setImg(e.target.value)}
           />
-        </Form.Group>
+        </InputGroup>
 
         <Button className="postButton" block size="lg" type="submit">
           Post Opportunity

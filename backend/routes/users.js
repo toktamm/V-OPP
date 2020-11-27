@@ -33,11 +33,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
             })
     }
 
-
-
-
-
-
     router.get("/", (req, res) => {
         getUsers()
             .then((users) => res.json(users))
