@@ -14,9 +14,9 @@ function FindPost() {
   return (
     <div className="findpost-container">
       <span className="btn-container">
-        <Link to="/findpage" className="">
+        {/* <Link to="/findpage" className="">
           <button className="find-btn">find opportunities</button>
-        </Link>
+        </Link> */}
         {loggedIn ? (
           <Link to="/postpage" className="">
             <button className="post-btn">post opportunities</button>
