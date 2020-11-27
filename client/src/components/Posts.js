@@ -28,7 +28,7 @@ import "./Posts.css";
 
 // export default Posts;
 
-function Posts() {
+function Posts(props) {
   const [postList, setpostList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -85,13 +85,11 @@ function Posts() {
                           : key.description}
                       </h5>
                       <Link
-                        to="/detailed"
+                        to={`/detailed/${key.id}`}
                         className="posts__item__link"
                         style={{ textDecoration: "none" }}
                       >
-                        <button className="posts__volunteer__btn">
-                          volunteer
-                        </button>
+                        <button onClick={() => props.setEachPostId(key.id)} className="posts__volunteer__btn">Volunteer</button>
                       </Link>
                     </div>
                   </figure>

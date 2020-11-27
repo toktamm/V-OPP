@@ -61,31 +61,26 @@ import "./App.css";
 // };
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    token ? setLoggedIn(true) : setLoggedIn(false);
-  }, []);
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [eachPostId, setEachPostId] = useState(7);
+  useEffect(()=>{
+    let token = localStorage.getItem('token')
+    token ? setLoggedIn(true) : setLoggedIn(false)
+  },[])
   return (
     <>
       {/* <h1>TEST REFRESH</h1> */}
       <Router>
         <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route
-            path="/login"
-            component={() => (
-              <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-            )}
-          />
-          <Route
-            path="/register"
-            component={() => (
-              <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-            )}
-          />
-          <Route path="/detailed" component={Detailed} />
+          {/* <Route path="/" exact component={Home} /> */}
+          <Route path="/" exact component={() => <Home setEachPostId={setEachPostId}/>} />
+
+          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
+
+          {/* <Route path="/detailed/:id" component={Detailed} /> */}
 
           <Route path="/arts" component={Arts} />
           <Route path="/animals" component={Animals} />

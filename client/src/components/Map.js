@@ -45,8 +45,8 @@ import "./Map.css";
 const libraries = ["places"];   //comment out
 
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: "35vh",
+  width: "40vw",
 };
 
 const center = {
