@@ -8,7 +8,6 @@ import Accordion from 'react-bootstrap/Accordion'
 import Table from 'react-bootstrap/Table'
 
 export default function Profile(props) {
-  console.log("This is loginToken: ", props.loginToken)
   return (
     <>
     <div class = "parent">

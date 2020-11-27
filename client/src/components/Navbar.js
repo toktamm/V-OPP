@@ -50,10 +50,11 @@ function Navbar(props) {
             <>
              <li >
               <Link to="/profile" className="nav-links"> Profile </Link>
-            </li>
+            </li> 
+
             
             <li >
-              <Link onClick={logout} className="nav-links"> Logout </Link>
+              <Link onClick={logout} className="nav-links">  Logout </Link>
             </li>
             </>
             }
