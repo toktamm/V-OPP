@@ -32,23 +32,45 @@ export default function Detailed({ eachPostId }) {
     }
   }
   console.log("postList is:", postList)
-  const theFind = postList.find(post => post.id === eachPostId);
-  console.log("theFind is:", theFind)
+  const detailedPost = postList.find(post => post.id === eachPostId);
+  console.log("detailedPost is:", detailedPost)
   return (
-    <div className="posts">
-      <div className="posts__container">
-        <div className="posts__wrapper">
-          <ul className="posts__items">
-            <li>{theFind?.title}</li>
-            <li>{theFind?.category}</li>
+
+    // <li>{detailedPost?.title}</li>
+    // <li>{detailedPost?.category}</li>
+    // <li>{detailedPost?.description}</li>
+
+
+
+    <li className="posts__item">
+      <div className="posts__wrapper">
+        <ul className="posts__items"></ul>
+        <figure className="posts__item__pic-wrap">
+          <img
+            className="posts__item__img"
+            src={detailedPost?.thumbnail_photo_url}
+            alt="description"
+          />
+          <div className="posts__item__info">
+            <h5 className="posts__item__title">{detailedPost?.title}</h5>
+            <h6 style={{ textDecoration: "underline" }}>
+              {detailedPost?.organization}
+            </h6>
+            <h5 className="posts__item__text">
+              {detailedPost?.description}
+            </h5>
+            <button className="posts__volunteer__btn">Volunteer</button>
+            <button className="posts__volunteer__btn">Contact Us</button>
+
+          </div>
+        </figure>
+      </div>
+    </li>
+
+
             
 
-            {/* {getPostTitle(eachPostId)} */}
-            {/* <Posts /> */}
-            {/* <Map /> */}
-          </ul>
-        </div>
-      </div>
-    </div>
+
+
   );
 }

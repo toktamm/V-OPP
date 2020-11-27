@@ -66,7 +66,7 @@ function Posts(props) {
                     className="posts__item__link"
                     style={{ textDecoration: "none" }}
                   >
-                    <button onClick={() => props.setEachPostId(key.id)} className="posts__volunteer__btn">volunteer</button>
+                    <button onClick={() => props.setEachPostId(key.id)} className="posts__volunteer__btn">Volunteer</button>
                   </Link>
                 </div>
               </figure>
