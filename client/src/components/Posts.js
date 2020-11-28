@@ -5,29 +5,6 @@ import { Link } from "react-router-dom";
 
 import "./Posts.css";
 
-// function Posts(props) {
-//   const { postData } = props;
-
-//   const posts = postData
-//     ? postData.map((postData, index) => {
-//         return (
-//           <div className="posts__container">
-//             <Post
-//               key={index}
-//               src={postData.src}
-//               title={postData.title}
-//               text={postData.text}
-//             />
-//           </div>
-//         );
-//       })
-//     : "There is no post here";
-
-//   return [posts];
-// }
-
-// export default Posts;
-
 function Posts(props) {
   const [postList, setpostList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

@@ -14,19 +14,8 @@
 
 .hero-container > h3 {
   color: #ffffff;
-<<<<<<< HEAD
-  /* font-size: 70px; */
-  font-size: 40px;
-
+  font-size: 50px;
   text-align: center;
-}
-
-.hero-container > h5 {
-  color: #ffffff;
-  font-size: 20px;
-=======
-  font-size: 70px;
->>>>>>> feature/userprofile
 }
 
 .hero-container > p {
