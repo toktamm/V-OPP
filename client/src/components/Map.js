@@ -32,6 +32,7 @@
 
 
 import React from "react";
+
 import {
   GoogleMap,
   useLoadScript,
@@ -39,10 +40,15 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
+// import usePlacesAutocomplete, {
+//   getGeocode,
+//   getLatLng,
+// } from "use-places-autocomplete";
+
+
+
 import "./Map.css";
 
-
-const libraries = ["places"];   //comment out
 
 const mapContainerStyle = {
   height: "35vh",
@@ -54,6 +60,9 @@ const center = {
   lng: -79.3832,
 };
 
+const libraries = ["places"];   //comment out
+
+
 
 export default function Map() {
 
@@ -61,6 +70,12 @@ export default function Map() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,  //comment out
   });
+
+
+  const [markers, setMarkers] = React.useState([]);
+
+
+
 
 
   if (loadError) return "Error Loading Maps";
@@ -79,11 +94,26 @@ export default function Map() {
         mapContainerStyle={mapContainerStyle}
         zoom={10}
         center={center}
-      // options={options}
-      // onClick={onMapClick}
+        // options={options}
+        // onClick={onMapClick}
+        onClick={(event) => {
+          setMarkers(current => [...current, {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng()
+          }])
+        }}
       // onLoad={onMapLoad}
-      ></GoogleMap>
+      >
+        {markers.map(marker => <Marker 
+          position={{ lat: marker.lat, lng: marker.lng }} />)}
+
+
+      </GoogleMap>
     </div>
   )
 
 }
+
+
+// change marker.time on line 107
+// this was ion line 107 inside teh Markey component : key={marker.time.toISOString()}

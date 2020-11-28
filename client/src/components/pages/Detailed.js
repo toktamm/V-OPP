@@ -1,5 +1,12 @@
 // import React from "react";
-import "../../App.css";
+// import "../../App.css";
+import "./Detailed.css";
+
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import Posts from "../Posts";
 import Map from "../Map";
 
@@ -59,16 +66,23 @@ export default function Detailed({ eachPostId }) {
             <h5 className="posts__item__text">
               {detailedPost?.description}
             </h5>
-            <button className="posts__volunteer__btn">Volunteer</button>
-            <button className="posts__volunteer__btn">Contact Us</button>
+            {/* <button className="posts__volunteer__btn">Volunteer</button>
+            <button className="posts__volunteer__btn">Contact Us</button> */}
 
+            <Button className="posts__volunteer__btn" block size="lg" type="submit">
+              Volunteer
+        </Button>
+        <Button className="posts__volunteer__btn" block size="lg" type="submit">
+              Contact Us
+        </Button>
+        <Map />
           </div>
         </figure>
       </div>
     </li>
 
 
-            
+
 
 
 

@@ -69,18 +69,15 @@ function App() {
   },[])
   return (
     <>
-      {/* <h1>TEST REFRESH</h1> */}
       <Router>
         <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Switch>
-          {/* <Route path="/" exact component={Home} /> */}
+
           <Route path="/" exact component={() => <Home setEachPostId={setEachPostId}/>} />
 
           <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
-
-          {/* <Route path="/detailed/:id" component={Detailed} /> */}
 
           <Route path="/arts" component={Arts} />
           <Route path="/animals" component={Animals} />
