@@ -36,17 +36,20 @@ export default function Login(props) {
       .post("http://localhost:3001/api/users/login", data)
       .then((res) => {
         if(res.data !== 'Failed login'){
-          console.log("this is response from login: ", res);
+          console.log("this is response from login: ", res.data.user);
           localStorage.setItem("token", res.data.token)
           props.setLoggedIn(true)
+          props.setUser(res.data.user)
           history.push('/')
         } else {
           setErrorMsg([
            'danger'
           ].map((variant, idx) => (
+            <div class = "alert">
             <Alert key={idx} variant={variant}>
            Invalid email or password
             </Alert>
+            </div>
           )))
           history.push('/login')
         }
@@ -56,7 +59,6 @@ export default function Login(props) {
       });
 
   }
-
 
 
   return (

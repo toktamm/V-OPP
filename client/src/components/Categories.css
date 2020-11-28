@@ -7,6 +7,12 @@
   color: #b1b1b1;
 }
 
+
+.categories__container :hover {
+  color: #2998fe;
+}
+
+
 .fas {
   font-size: 2rem;
   vertical-align: middle;

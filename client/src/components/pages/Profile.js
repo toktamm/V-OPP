@@ -8,7 +8,6 @@ import Accordion from 'react-bootstrap/Accordion'
 import Table from 'react-bootstrap/Table'
 
 export default function Profile(props) {
-  console.log("This is loginToken: ", props.loginToken)
   return (
     <>
     <div class = "parent">
@@ -59,7 +58,7 @@ export default function Profile(props) {
   <Card>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey="0">
-      Previous activity      </Accordion.Toggle>
+      Previous application      </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey="0">
       <Card.Body>No previous activity</Card.Body>

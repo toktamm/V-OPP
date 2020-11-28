@@ -4,9 +4,20 @@ import { Link } from "react-router-dom";
 import "./Categories.css";
 
 function Categories() {
+
   return (
     <div className="categories__container">
       <div className="categories__icons">
+      <Link
+          to="/"
+          className="categories__link"
+          style={{ textDecoration: "none", color: "#b1b1b1" }}
+        >
+          <div className="categories__grp">
+            <i class="fas fa-home"></i>
+            All
+          </div>
+        </Link>
         <Link
           to="/arts"
           className="categories__link"

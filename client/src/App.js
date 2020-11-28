@@ -74,11 +74,11 @@ function App() {
     <>
       {/* <h1>TEST REFRESH</h1> */}
       <Router>
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}  user = {user} />
         <Switch>
-          <Route path="/" exact component={() => <Home setEachPostId={setEachPostId}/>} />
+          <Route path="/" exact component={() => <Home setEachPostId={setEachPostId} />} />
           <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser}/>} />
-          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser} user = {user} />}/>
           <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
           <Route path="/detailed" component={Detailed} />
           <Route path="/arts" component={Arts} />
