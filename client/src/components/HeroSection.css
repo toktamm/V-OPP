@@ -14,7 +14,15 @@
 
 .hero-container > h3 {
   color: #ffffff;
-  font-size: 70px;
+  /* font-size: 70px; */
+  font-size: 40px;
+
+  text-align: center;
+}
+
+.hero-container > h5 {
+  color: #ffffff;
+  font-size: 20px;
 }
 
 .hero-container > p {

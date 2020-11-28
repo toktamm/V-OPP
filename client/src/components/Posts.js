@@ -59,12 +59,14 @@ function Posts(props) {
             if (searchTerm == "") {
               return val;
             } else if (
-              val.category.toLowerCase().includes(searchTerm.toLowerCase())
+              val.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              val.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              val.description.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return val;
             }
           })
-          .map((key, val) => {
+          .map((key) => {
             return (
               <li className="posts__item">
                 <div className="posts__wrapper">
