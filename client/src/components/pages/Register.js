@@ -16,7 +16,7 @@ export default function Register(props) {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  const history = useHistory()
+  const history = useHistory();
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -30,16 +30,17 @@ export default function Register(props) {
       email,
       password,
       phone,
-      address
+      address,
     };
     return axios
       .post("http://localhost:3001/api/users", data)
       .then((res) => {
         console.log("this is response: ", res);
-        localStorage.setItem("token", res.data.token)
-        props.setLoggedIn(true)
-        props.setUser(data)
-        history.push("/")
+        localStorage.setItem("token", res.data.token);
+        props.setLoggedIn(true);
+        // props.setUser(data);
+        props.setUser(res.data.user);
+        history.push("/");
       })
       .catch((err) => {
         console.log("Received an error: ", err);
@@ -52,8 +53,9 @@ export default function Register(props) {
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Form.Group as={Col} size="lg" controlId="username">
-              <Form.Label>First name</Form.Label>
+              <Form.Label></Form.Label>
               <Form.Control
+                placeholder="First Name"
                 autoFocus
                 type="firstname"
                 value={first_name}
@@ -62,8 +64,9 @@ export default function Register(props) {
             </Form.Group>
 
             <Form.Group as={Col} size="lg" controlId="username">
-              <Form.Label>Last name</Form.Label>
+              <Form.Label></Form.Label>
               <Form.Control
+                placeholder="Last Name"
                 autoFocus
                 type="lastname"
                 value={last_name}
@@ -73,8 +76,9 @@ export default function Register(props) {
           </Form.Row>
 
           <Form.Group size="lg" controlId="email">
-            <Form.Label>Email </Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
+              placeholder="Email Address"
               autoFocus
               type="email"
               value={email}
@@ -83,8 +87,9 @@ export default function Register(props) {
           </Form.Group>
 
           <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -92,8 +97,9 @@ export default function Register(props) {
           </Form.Group>
 
           <Form.Group size="lg" controlId="phone">
-            <Form.Label>Phone number</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
+              placeholder="Phone Number"
               type="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -101,18 +107,18 @@ export default function Register(props) {
           </Form.Group>
 
           <Form.Group size="lg" controlId="address">
-            <Form.Label>Address</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
+              placeholder="Address"
               type="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
           </Form.Group>
 
-          
           <Button block size="lg" type="submit" disabled={!validateForm()}>
             Register
-          </Button>          
+          </Button>
           <NavLink
             className="navbar-item"
             activeClassName="is-active"

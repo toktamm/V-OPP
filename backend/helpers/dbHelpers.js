@@ -154,7 +154,6 @@ module.exports = (db) => {
   };
 
   const addPost = (
-    user_id,
     category,
     title,
     organization,
@@ -168,10 +167,11 @@ module.exports = (db) => {
     date_posted,
     start_date,
     requirements,
-    additional_info
+    additional_info,
+    user_id
   ) => {
     const query = {
-      text: `INSERT INTO posts (user_id,
+      text: `INSERT INTO posts (
         category,
         title,
         organization,
@@ -185,9 +185,8 @@ module.exports = (db) => {
         date_posted,
         start_date,
         requirements,
-        additional_info) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
+        additional_info, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
       values: [
-        user_id,
         category,
         title,
         organization,
@@ -202,6 +201,7 @@ module.exports = (db) => {
         start_date,
         requirements,
         additional_info,
+        user_id,
       ],
     };
 

@@ -1,24 +1,31 @@
-
 .PostPage {
-  height:170vh
+  height: 170vh;
 }
 
-
 Form {
-  float:center;
-  margin:0% 11% 0% 13%;
-} 
+  float: center;
+  margin: 0% 11% 0% 13%;
+}
 
 .imgPost {
   margin: 2% 11% 2% 13%;
   height: 280px;
   width: 75%;
-} 
+}
 
-.input{
+.input {
   margin-bottom: 15px;
-} 
+}
 
-.postButton{
+.postButton {
   margin-top: 20px;
 }
+
+/* .form-group > label {
+  top: 18px;
+  left: 6px;
+  position: relative;
+  background-color: white;
+  padding: 0px 5px 0px 5px;
+  font-size: 0.9em;
+} */

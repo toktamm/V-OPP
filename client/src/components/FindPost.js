@@ -19,11 +19,11 @@ function FindPost() {
         </Link> */}
         {loggedIn ? (
           <Link to="/postpage" className="">
-            <button className="post-btn">post opportunities</button>
+            <button className="post-btn">Post Opportunities</button>
           </Link>
         ) : (
           <Link to="/login" className="">
-            <button className="post-btn">post opportunities</button>
+            <button className="post-btn">Post Opportunities</button>
           </Link>
         )}
       </span>

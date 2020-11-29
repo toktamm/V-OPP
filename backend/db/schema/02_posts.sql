@@ -17,5 +17,5 @@ CREATE TABLE posts(
     requirements TEXT,
     additional_info TEXT,
     active BOOLEAN NOT NULL DEFAULT TRUE,
-    user_id INTEGER REFERENCES users(id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );

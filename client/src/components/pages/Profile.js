@@ -29,6 +29,7 @@ export default function Profile(props) {
         <>
           <u>{key.title}</u>
           <h6>{key.organization}</h6>
+          <h6>Positions available: {key.positions_available}</h6>
           <br />
         </>
       );
@@ -54,7 +55,7 @@ export default function Profile(props) {
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>email address</th>
+                <th>Email Address</th>
               </tr>
             </thead>
             <tbody>
@@ -94,33 +95,23 @@ export default function Profile(props) {
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  Previous application{" "}
+                  Current Postings
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body>No previous activity</Card.Body>
+                <Card.Body>{eachUsersPosts}</Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  Current application
+                  Pending Applications
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
                   No application , Current Status: Not available{" "}
                 </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                  Current postings
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="2">
-                <Card.Body>{eachUsersPosts}</Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
