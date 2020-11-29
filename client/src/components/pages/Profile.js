@@ -58,49 +58,49 @@ export default function Profile(props) {
 
   // PENDING USER APPLICATIONS - *FEATURE NEED TO IMPLEMENT
 
-  // const eachUsersApplication = userPost
-  //   .filter((post) => post.user_id === props.user.id)
-  //   .map((key) => {
-  //     return (
-  //       <div className="profile__current__postings">
-  //         <h6>
-  //           <u>User:</u> {key.fist_name} {key.last_name}
-  //         </h6>
-  //         <h6>
-  //           <u>Email:</u> {key.email}
-  //         </h6>
-  //         <br />
-  //         <Link
-  //           to={`/detailed/${key.id}`}
-  //           className="profile__item__link"
-  //           style={{ textDecoration: "none" }}
-  //         >
-  //           <button
-  //             style={{ outline: "none" }}
-  //             onClick={() => props.setEachPostId(key.id)}
-  //             className="profile__volunteer__btn"
-  //           >
-  //             accept
-  //           </button>
-  //         </Link>
-  //         <Link
-  //           to={`/detailed/${key.id}`}
-  //           className="profile__item__link"
-  //           style={{ textDecoration: "none" }}
-  //         >
-  //           <button
-  //             style={{ outline: "none" }}
-  //             onClick={() => props.setEachPostId(key.id)}
-  //             className="profile__volunteer__btn"
-  //           >
-  //             decline
-  //           </button>
-  //         </Link>
-  //         <br />
-  //         <br />
-  //       </div>
-  //     );
-  //   });
+  const eachUsersApplication = userPost
+    .filter((post) => post.user_id === props.user.id)
+    .map((key) => {
+      return (
+        <div className="profile__current__postings">
+          <h6>
+            <u>User:</u> {key.fist_name} {key.last_name}
+          </h6>
+          <h6>
+            <u>Email:</u> {key.email}
+          </h6>
+          <br />
+          <Link
+            to={`/detailed/${key.id}`}
+            className="profile__item__link"
+            style={{ textDecoration: "none" }}
+          >
+            <button
+              style={{ outline: "none" }}
+              onClick={() => props.setEachPostId(key.id)}
+              className="profile__volunteer__btn"
+            >
+              accept
+            </button>
+          </Link>
+          <Link
+            to={`/detailed/${key.id}`}
+            className="profile__item__link"
+            style={{ textDecoration: "none" }}
+          >
+            <button
+              style={{ outline: "none" }}
+              onClick={() => props.setEachPostId(key.id)}
+              className="profile__volunteer__btn"
+            >
+              decline
+            </button>
+          </Link>
+          <br />
+          <br />
+        </div>
+      );
+    });
 
   console.log("eachUsersPosts is:", eachUsersPosts);
 
@@ -177,8 +177,8 @@ export default function Profile(props) {
               </Card.Header>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
-                  No application , Current Status: Not available
-                  {/* {eachUsersApplication} */}
+                  {/* No application , Current Status: Not available */}
+                  {eachUsersApplication}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
