@@ -18,7 +18,7 @@ import Axios from "axios";
 
 export default function Detailed({ eachPostId }) {
 
-  // console.log("eachPostId on the Detailed is", eachPostId);
+  console.log("eachPostId on the Detailed is", eachPostId);
   // console.log("pathname", window.location.pathname);
 
   const [postList, setpostList] = useState([]);
@@ -31,20 +31,21 @@ export default function Detailed({ eachPostId }) {
   }, []);
 
 
-  // this function is not being used
-  const getPostTitle = (postId) => {
-    if (postList.length > 0) {
-      // console.log("postList is this:", postList)
-      return postList[postId].title;
-    } else {
-      return "";
-    }
-  }
+  // // this function is not being used
+  // const getPostTitle = (postId) => {
+  //   if (postList.length > 0) {
+  //     // console.log("postList is this:", postList)
+  //     return postList[postId].title;
+  //   } else {
+  //     return "";
+  //   }
+  // }
 
-
-  // console.log("postList in Detailed is:", postList)
+  console.log("postList in Detailed is:", postList)
   const detailedPost = postList.find(post => post.id === eachPostId);
-  // console.log("detailedPost on the Detailed is:", detailedPost)
+  console.log("detailedPost on the Detailed is:", detailedPost)
+  
+
   return (
 
     // <li>{detailedPost?.title}</li>
@@ -75,7 +76,7 @@ export default function Detailed({ eachPostId }) {
             </h6>
             <h6 className="posts__item__positions">
               Positions Available: {detailedPost?.positions_available}
-            </h6>            
+            </h6>
             {/* <button className="posts__volunteer__btn">Volunteer</button>
             <button className="posts__volunteer__btn">Contact Us</button> */}
 
@@ -85,13 +86,11 @@ export default function Detailed({ eachPostId }) {
             <Button className="posts__volunteer__btn" block size="lg" type="submit">
               Contact Us
         </Button>
-            <Map />
+        <Map eachPostId={eachPostId} detailedPost={detailedPost}/>
           </div>
         </figure>
       </div>
     </li>
-
-
 
 
 

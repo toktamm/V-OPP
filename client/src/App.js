@@ -62,7 +62,7 @@ import "./App.css";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [eachPostId, setEachPostId] = useState(7);
+  const [eachPostId, setEachPostId] = useState("");
   useEffect(()=>{
     let token = localStorage.getItem('token')
     token ? setLoggedIn(true) : setLoggedIn(false)

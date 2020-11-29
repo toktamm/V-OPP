@@ -65,34 +65,50 @@ const libraries = ["places"];   //comment out
 
 
 
-export default function Map( eachPostId ) {
+export default function Map(props) {
 
-  console.log("eachPostId on Map is:", eachPostId)
+  // console.log("eachPostId on Map is:", eachPostId)
+  console.log("props in Map is: ", props)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,  //comment out
   });
 
-  const [postList, setpostList] = useState([]);
+
+  // const passIsLoadedToParent = props.passToParent(isLoaded);
+
+
+  // const [postList, setpostList] = useState([]);
+
+  // const [detailedPost, setDetailedPost] = useState([]);
 
   const [markers, setMarkers] = React.useState([]);
 
   
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/api/posts").then((data) => {
-      // console.log("posts ------- ", data);
-      setpostList(data.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/api/posts").then((data) => {
+  //     // console.log("posts ------- ", data);
+  //     setpostList(data.data);
+  //   });
+  // }, []);
+
+  
+  // console.log("postList in the Map is:", postList)
+  // const detailedPost = postList.find(post => post.id === eachPostId);
+  // console.log("detailedPost in the Map is:", detailedPost)
+  
+  // console.log("street in Map is: ", props?.detailedPost.street)
+  // console.log("city in Map is: ", props?.detailedPost.city)
 
 
-  console.log("postList in the Map is:", postList)
-  const detailedPost = postList.find(post => post.id === eachPostId);
-  console.log("detailedPost is:", detailedPost)
+  const streetAddress = props?.detailedPost?.street;
+  const cityName = props?.detailedPost?.city;
+  const provinceName = props?.detailedPost?.province;
+  const postCode = props?.detailedPost?.post_code;
 
-
+  
 
 
   // {detailedPost?.street}
@@ -104,7 +120,7 @@ export default function Map( eachPostId ) {
 
 
   // const streetName = props.detailedPost.street
-  console.log("lets see, streetName is:", detailedPost?.street)
+  // console.log("lets see, streetName is:", detailedPost?.street)
   // {props.detailedPost.city}
   // {props.detailedPost.province}
   // {props.detailedPost.post_code}
@@ -114,11 +130,19 @@ export default function Map( eachPostId ) {
   if (!isLoaded) return "Loading Maps";
 
 
+  // const mapRef = React.useRef();
+  // const onMapLoad = React.useCallback((map) => {
+  //   mapRef.current = map;
+  // }, []);
+
+
   return (
     <div>
       <h1>
         <img className="logo" src="images/volunteer-logo.png" />
       </h1>
+      {console.log("streetAddress inside return in Map is: ", streetAddress)}
+
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -126,6 +150,7 @@ export default function Map( eachPostId ) {
         center={center}
         // options={options}
         // onClick={onMapClick}
+
         // getAddress={}
         onClick={(event) => {
           setMarkers(current => [...current, {
