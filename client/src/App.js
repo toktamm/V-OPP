@@ -119,7 +119,16 @@ function App() {
           <Route path="/health" component={Health} />
           <Route path="/seniors" component={Seniors} />
           <Route path="/sports" component={Sports} />
-          <Route path="/profile" component={() => <Profile user={user} />} />
+          <Route
+            path="/profile"
+            component={() => (
+              <Profile
+                user={user}
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+              />
+            )}
+          />
           <Route path="/findpage" component={Findpage} />
           {/* <Route path="/postpage" component={Postpage} /> */}
           <Route path="/postpage" component={() => <Postpage user={user} />} />
