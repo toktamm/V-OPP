@@ -96,7 +96,7 @@ function App() {
           <Route path="/findpage" component={Findpage} />
           <Route path="/postpage" component={Postpage} />
         </Switch>
-      </Router>
+      </Router>    
       <UserProvider></UserProvider>
     </>
   );
