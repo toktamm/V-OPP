@@ -14,25 +14,6 @@ export default function Detailed({ eachPostId }) {
   console.log("id is", eachPostId);
   console.log("pathname", window.location.pathname);
 
- 
-  function handleSubmit(event) {
-    event.preventDefault();
-   
-   return Axios
-  .post("http://localhost:3001/api/users", post)
-  .then((res) => {
-    console.log("this is response: ", res);
-  })
-  .catch((err) => {
-    console.log("Received an error: ", err);
-  });
-}
-
- 
- 
- 
-  const [post, setPost] = useState("");
-
   const [postList, setpostList] = useState([]);
 
   useEffect(() => {
@@ -53,11 +34,6 @@ export default function Detailed({ eachPostId }) {
   console.log("postList is:", postList)
   const detailedPost = postList.find(post => post.id === eachPostId);
   console.log("detailedPost is:", detailedPost)
-
-
-
-
-
   return (
 
     // <li>{detailedPost?.title}</li>
@@ -83,17 +59,18 @@ export default function Detailed({ eachPostId }) {
             <h5 className="posts__item__text">
               {detailedPost?.description}
             </h5>
-            <button 
-            onSubmit={handleSubmit}
-             className="posts__volunteer__btn" 
-             type="submit"
-            > Volunteer</button>
-           
-            <button className="posts__volunteer__btn" >Contact Us</button>
+            <button className="posts__volunteer__btn">Volunteer</button>
+            <button className="posts__volunteer__btn">Contact Us</button>
 
           </div>
         </figure>
       </div>
     </li>
+
+
+            
+
+
+
   );
 }

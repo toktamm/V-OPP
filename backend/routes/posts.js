@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-module.exports = ({ getPosts, addPost }) => {
+
+const { getPostsByUsers } = require("../helpers/dataHelpers");
+
+module.exports = ({ getPosts, addPost, getUsersPosts }) => {
   router.get("/", (req, res) => {
     getPosts()
       .then((posts) => res.json(posts))
@@ -11,6 +14,18 @@ module.exports = ({ getPosts, addPost }) => {
       );
   });
 
+  router.get("/posts", (req, res) => {
+    getUsersPosts()
+      .then((usersPosts) => {
+        const formattedPosts = getPostsByUsers(usersPosts);
+        res.json(formattedPosts);
+      })
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
   router.post("/", (req, res) => {
     const {
