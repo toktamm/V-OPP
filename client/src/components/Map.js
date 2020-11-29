@@ -31,7 +31,8 @@
 
 
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 import {
   GoogleMap,
@@ -64,24 +65,53 @@ const libraries = ["places"];   //comment out
 
 
 
-export default function Map() {
+export default function Map( eachPostId ) {
+
+  console.log("eachPostId on Map is:", eachPostId)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,  //comment out
   });
 
+  const [postList, setpostList] = useState([]);
 
   const [markers, setMarkers] = React.useState([]);
 
+  
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/posts").then((data) => {
+      // console.log("posts ------- ", data);
+      setpostList(data.data);
+    });
+  }, []);
 
 
+  console.log("postList in the Map is:", postList)
+  const detailedPost = postList.find(post => post.id === eachPostId);
+  console.log("detailedPost is:", detailedPost)
+
+
+
+
+  // {detailedPost?.street}
+  // {detailedPost?.street}
+  // {detailedPost?.city}
+  // {detailedPost?.province}
+  // {detailedPost?.post_code}
+
+
+
+  // const streetName = props.detailedPost.street
+  console.log("lets see, streetName is:", detailedPost?.street)
+  // {props.detailedPost.city}
+  // {props.detailedPost.province}
+  // {props.detailedPost.post_code}
 
 
   if (loadError) return "Error Loading Maps";
   if (!isLoaded) return "Loading Maps";
-
-
 
 
   return (
@@ -96,6 +126,7 @@ export default function Map() {
         center={center}
         // options={options}
         // onClick={onMapClick}
+        // getAddress={}
         onClick={(event) => {
           setMarkers(current => [...current, {
             lat: event.latLng.lat(),
