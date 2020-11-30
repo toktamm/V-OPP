@@ -42,7 +42,7 @@ import "./App.css";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [eachPostId, setEachPostId] = useState(7);
+  const [eachPostId, setEachPostId] = useState("");
   const [user, setUser] = useState(null);
   const [applyUser, setApplyUser] = useState();
   const [postList, setpostList] = useState([]);
@@ -53,7 +53,6 @@ function App() {
   }, []);
   return (
     <>
-      {/* <h1>TEST REFRESH</h1> */}
       <Router>
         <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
         <Switch>
@@ -103,22 +102,126 @@ function App() {
             )}
           />
           <Route path="/detailed" component={Detailed} />
-          <Route path="/arts" component={Arts} />
+          <Route
+            path="/arts"
+            component={Arts}
+            component={() => (
+              <Arts
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
           <Route
             path="/animals"
-            component={Animals}
-            eachPostId={eachPostId}
-            setEachPostId={setEachPostId}
+            component={() => (
+              <Animals
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
           />
-          <Route path="/youth" component={Youth} />
-          <Route path="/community" component={Community} />
-          <Route path="/disaster" component={Disaster} />
-          <Route path="/education" component={Education} />
-          <Route path="/environment" component={Environment} />
-          <Route path="/religious" component={Religious} />
-          <Route path="/health" component={Health} />
-          <Route path="/seniors" component={Seniors} />
-          <Route path="/sports" component={Sports} />
+          <Route
+            path="/youth"
+            component={Youth}
+            component={() => (
+              <Youth
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/community"
+            component={Community}
+            component={() => (
+              <Community
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/disaster"
+            component={Disaster}
+            component={() => (
+              <Disaster
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/education"
+            component={Education}
+            component={() => (
+              <Education
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/environment"
+            component={Environment}
+            component={() => (
+              <Environment
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/religious"
+            component={Religious}
+            component={() => (
+              <Religious
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/health"
+            component={Health}
+            component={() => (
+              <Health
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/seniors"
+            component={Seniors}
+            component={() => (
+              <Seniors
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/sports"
+            component={Sports}
+            component={() => (
+              <Sports
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
+          />
           <Route
             path="/profile"
             component={() => (

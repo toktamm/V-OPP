@@ -23,6 +23,21 @@
   font-size: 20px;
   cursor: pointer;
 }
+.post-btn:hover {
+  position: relative;
+  border-radius: 25px;
+  width: 700px;
+  height: 40px;
+  background-color: #3d9ffa;
+  color: white;
+  border: none;
+  /* padding: 5px 200px; */
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 20px;
+  cursor: pointer;
+}
 
 .find-btn {
   background-color: #e7e7e7;

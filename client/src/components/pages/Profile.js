@@ -54,7 +54,7 @@ export default function Profile(props) {
             <u>Organization:</u> {key.organization}
           </h6>
           <h6>
-            <u>Positions available:</u> {key.description}
+            <u>Description:</u> {key.description}
           </h6>
           <h6>
             <u>Positions available:</u> {key.positions_available}
@@ -146,13 +146,13 @@ export default function Profile(props) {
           <br />
           <br />
           <Link
-            to={`/detailed/${key.id}`}
+            to={`/detailed/${key.post_id}`}
             className="profile__item__link"
             style={{ textDecoration: "none" }}
           >
             <button
               style={{ outline: "none" }}
-              onClick={() => props.setEachPostId(key.id)}
+              onClick={() => props.setEachPostId(key.post_id)}
               className="profile__volunteer__btn"
             >
               view
@@ -213,7 +213,7 @@ export default function Profile(props) {
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  Current Postings
+                  Current Volunteer Postings
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">

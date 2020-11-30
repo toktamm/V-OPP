@@ -1,6 +1,6 @@
 .categories__container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 60%;
   margin: 0 auto;
