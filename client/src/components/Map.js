@@ -78,10 +78,10 @@ export default function Map(props) {
   const provinceName = props?.detailedPost?.province;
   const postCode = props?.detailedPost?.post_code;
 
-  console.log("let see if we get the streetAddress: ", streetAddress);
-  console.log("let see if we get the cityName: ", cityName);
-  console.log("let see if we get the provinceName: ", provinceName);
-  console.log("let see if we get the postCode: ", postCode);
+  // console.log("let see if we get the streetAddress: ", streetAddress);
+  // console.log("let see if we get the cityName: ", cityName);
+  // console.log("let see if we get the provinceName: ", provinceName);
+  // console.log("let see if we get the postCode: ", postCode);
 
   const addressObj = { streetAddress, cityName, provinceName, postCode };
   console.log("let see what the addressObj is: ", addressObj);
@@ -89,23 +89,7 @@ export default function Map(props) {
   const adressInOneLine = `${addressObj.streetAddress}, ${addressObj.cityName}, ${addressObj.provinceName}, ${addressObj.postCode}`
   console.log("addressInOneLine isss: ", adressInOneLine)
 
-  // const addressFormatNeeded = {
-  //   address: "Section 5, Xinyi Road, Xinyi District, Taipei City, Taiwan",
-  // };
 
-  // {detailedPost?.street}
-  // {detailedPost?.street}
-  // {detailedPost?.city}
-  // {detailedPost?.province}
-  // {detailedPost?.post_code}
-
-
-
-  // const streetName = props.detailedPost.street
-  // console.log("lets see, streetName is:", detailedPost?.street)
-  // {props.detailedPost.city}
-  // {props.detailedPost.province}
-  // {props.detailedPost.post_code}
 
 
   if (loadError) return "Error Loading Maps";
@@ -152,45 +136,20 @@ export default function Map(props) {
   getGeocode(address)
     .then((results) => getLatLng(results[0]))
     .then((latLng) => {
-      const { lat, lng } = latLng;
-      setLat(latLng.lat);
-      setLng(latLng.lng);
       console.log("latLng.lat iiissss: ", latLng.lat)
 
+      const { lat, lng } = latLng;
+
       console.log("Coordinates: ", { lat, lng });
+
+      setLat(latLng.lat);
+
+      setLng(latLng.lng);
+
     })
     .catch((error) => {
       console.log("Error: ", error);
     });
-
-
-  console.log("gerGeocode(adress) isss: ", getGeocode(address))
-
-
-
-  const lati = getGeocode(address)
-    .then((results) => getLatLng(results[0]))
-    .then((latLng) => {
-      const { lat, lng } = latLng;
-      console.log("latLng.lat iiissss: ", latLng.lat)
-
-      console.log("Coordinates: ", { lat, lng });
-
-      return latLng.lat;
-
-    })
-
-
-  console.log("lati is: ", lati)
-
-  // const latitude = lati.resolve(latLng.lat)
-
-
-  // console.log("latitude iisssss: ", latitude)
-
-
-  // const lngi = latLng.lng;
-
 
 
 
@@ -204,10 +163,9 @@ export default function Map(props) {
         <img className="logo" src="images/volunteer-logo.png" />
       </h1>
       {console.log("streetAddress inside return in Map is: ", streetAddress)}
-<h1>
-  {lat} {lng}
-
-</h1>
+      {/* <h1>
+        {lat} {lng}
+      </h1> */}
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -223,13 +181,18 @@ export default function Map(props) {
       //   }])
       // }}
 
+        // marker = {setMarkers(current => [...current, {
+        //   lat: lat,
+        //   lng: lng
+        // }])}
+
 
       // onLoad={onMapLoad}
       >
         {/* {markers.map(marker => <Marker
           position={{ lat: marker.lati, lng: marker.lngi }} />)} */}
 
-        <Marker position={lat, lng} />
+        <Marker position={{lat, lng}} />
 
       </GoogleMap>
     </div>
