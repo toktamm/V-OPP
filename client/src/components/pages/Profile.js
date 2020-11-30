@@ -77,8 +77,6 @@ export default function Profile(props) {
       );
     });
 
-  // console.log("eachUsersPosts is:", eachUsersPosts);
-
   // PENDING USER APPLICATIONS - *FEATURE NEED TO IMPLEMENT
 
   const eachUsersApplication = userPost
@@ -106,6 +104,8 @@ export default function Profile(props) {
               accept
             </button>
           </Link>
+          <br />
+          <br />
           <Link
             to={`/detailed/${key.id}`}
             className="profile__item__link"
@@ -166,14 +166,16 @@ export default function Profile(props) {
   return (
     <>
       <div class="parent">
-        <section class="card">
-          <Card style={{ width: "20rem" }}>
-            <Card.Img variant="top" src="images/img-6.jpg" />
-            <Card.Body>
-              <Card.Title>↓↓The best volunteer ever↙↙ </Card.Title>
-              <Card.Title>{props.user.first_name}</Card.Title>
-            </Card.Body>
-          </Card>
+        <section className="profile__card">
+          <Accordion>
+            <Card style={{ width: "20rem" }}>
+              <Card.Img variant="top" src="images/img-6.jpg" />
+              <Card.Body>
+                <Card.Title>↓↓The best volunteer ever↙↙ </Card.Title>
+                <Card.Title>{props.user.first_name}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Accordion>
         </section>
         <section class="card2">
           <Table striped bordered hover>
@@ -216,7 +218,10 @@ export default function Profile(props) {
                 <Card.Body>{eachUsersPosts}</Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
+
+            {/* PENDING VOLUNTEER APPLICATION */}
+
+            {/* <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="1">
                   Pending Applications
@@ -224,11 +229,10 @@ export default function Profile(props) {
               </Card.Header>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
-                  {/* No application , Current Status: Not available */}
                   {eachUsersApplication}
                 </Card.Body>
               </Accordion.Collapse>
-            </Card>
+            </Card> */}
 
             {/* APPLIED VOLUNTEER OPPORTUNITIES */}
 
