@@ -1,0 +1,11 @@
+.posts__item__img {
+  display: flex;
+  flex-direction: column;
+  height: "35vh";
+  width: "10";
+}
+
+.posts__volunteer__btn {
+  width: 50%;
+  border-radius: 25px;
+}
