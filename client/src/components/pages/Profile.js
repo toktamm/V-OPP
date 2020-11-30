@@ -52,7 +52,7 @@ export default function Profile(props) {
             <u>Organization:</u> {key.organization}
           </h6>
           <h6>
-            <u>Positions available:</u> {key.description}
+            <u>Description:</u> {key.description}
           </h6>
           <h6>
             <u>Positions available:</u> {key.positions_available}

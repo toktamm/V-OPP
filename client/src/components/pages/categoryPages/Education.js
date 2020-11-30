@@ -64,7 +64,7 @@ function Education(props) {
                           onClick={() => props.setEachPostId(key.id)}
                           className="posts__volunteer__btn"
                         >
-                          Volunteer
+                          Learn More
                         </button>
                       </Link>
                     </div>
