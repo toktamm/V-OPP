@@ -21,7 +21,7 @@ export default function Detailed(props) {
   // delete the following line if everything is working
   // export default function Detailed({ eachPostId }) {
 
-  console.log("eachPostId on the Detailed is", eachPostId);
+  // console.log("eachPostId on the Detailed is", eachPostId);
   // console.log("pathname", window.location.pathname);
 
 
@@ -111,7 +111,7 @@ export default function Detailed(props) {
           <Button className="posts__volunteer__btn" block size="lg" type="submit">
             Contact Us
         </Button>
-          <Map eachPostId={eachPostId} detailedPost={detailedPost} />
+          <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
           </div>
         </figure>
       </div>

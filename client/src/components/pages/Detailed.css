@@ -3,6 +3,7 @@
   flex-direction: column;
   height: "35vh";
   width: "10";
+  border-radius: 25px;
 }
 
 .posts__volunteer__btn {
