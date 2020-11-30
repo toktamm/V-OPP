@@ -32,6 +32,12 @@
 
 
 import React, { useState, useEffect } from "react";
+
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+
 import Axios from "axios";
 
 import {
@@ -85,7 +91,7 @@ export default function Map(props) {
 
   const [markers, setMarkers] = React.useState([]);
 
-  
+
 
   // useEffect(() => {
   //   Axios.get("http://localhost:3001/api/posts").then((data) => {
@@ -94,11 +100,11 @@ export default function Map(props) {
   //   });
   // }, []);
 
-  
+
   // console.log("postList in the Map is:", postList)
   // const detailedPost = postList.find(post => post.id === eachPostId);
   // console.log("detailedPost in the Map is:", detailedPost)
-  
+
   // console.log("street in Map is: ", props?.detailedPost.street)
   // console.log("city in Map is: ", props?.detailedPost.city)
 
@@ -108,8 +114,20 @@ export default function Map(props) {
   const provinceName = props?.detailedPost?.province;
   const postCode = props?.detailedPost?.post_code;
 
-  
+  console.log("let see if we get the streetAddress: ", streetAddress);
+  console.log("let see if we get the cityName: ", cityName);
+  console.log("let see if we get the provinceName: ", provinceName);
+  console.log("let see if we get the postCode: ", postCode);
 
+  const addressObj = { streetAddress, cityName, provinceName, postCode };
+  console.log("let see what the addressObj is: ", addressObj);
+
+  const adressInOneLine = `${addressObj.streetAddress}, ${addressObj.cityName}, ${addressObj.provinceName}, ${addressObj.postCode}`
+  console.log("addressInOneLine isss: ", adressInOneLine)
+  
+  // const addressFormatNeeded = {
+  //   address: "Section 5, Xinyi Road, Xinyi District, Taipei City, Taiwan",
+  // };
 
   // {detailedPost?.street}
   // {detailedPost?.street}
@@ -136,6 +154,53 @@ export default function Map(props) {
   // }, []);
 
 
+
+  //   async (streetAddress, cityName, provinceName, postCode) => {
+  //   try {
+  //     const results = await getGeocode({ streetAddress, cityName, provinceName, postCode });
+  //     console.log("results of getGeocode is: ", results)
+  //     const { lat, lng } = await getLatLng(results[0])
+  //   } catch (error) {
+  //     console.log("😱 Error: ", error);
+  //   }
+  // };
+
+
+
+  // getGeocode(streetAddress)
+  //   .then((results) =>
+  //     console.log("results of getGeocode is: ", results)
+  //     // getLatLng(results[0])
+  //   )
+  //   .then(({ lat, lng }) => {
+  //     console.log("📍 Coordinates: ", { lat, lng });
+  //   })
+  //   .catch((error) => {
+  //     console.log("😱 Error: ", error);
+  //   });
+
+
+
+    const address = {
+      address: adressInOneLine,
+    };
+     
+    getGeocode(address)
+      .then((results) => getLatLng(results[0]))
+      .then((latLng) => {
+        const { lat, lng } = latLng;
+     
+        console.log("Coordinates: ", { lat, lng });
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+
+
+
+
+
+
   return (
     <div>
       <h1>
@@ -160,7 +225,7 @@ export default function Map(props) {
         }}
       // onLoad={onMapLoad}
       >
-        {markers.map(marker => <Marker 
+        {markers.map(marker => <Marker
           position={{ lat: marker.lat, lng: marker.lng }} />)}
 
 
