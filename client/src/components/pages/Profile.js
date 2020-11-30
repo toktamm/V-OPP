@@ -52,6 +52,9 @@ export default function Profile(props) {
             <u>Organization:</u> {key.organization}
           </h6>
           <h6>
+            <u>Positions available:</u> {key.description}
+          </h6>
+          <h6>
             <u>Positions available:</u> {key.positions_available}
           </h6>
           <Link
@@ -135,6 +138,10 @@ export default function Profile(props) {
           <h6>
             <u>Organization:</u> {key.organization}
           </h6>
+          <h6>
+            <u>Description:</u> {key.description}
+          </h6>
+          <br />
           <br />
           <Link
             to={`/detailed/${key.id}`}
