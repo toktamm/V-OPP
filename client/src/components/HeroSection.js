@@ -1,21 +1,21 @@
 // import React from "react";
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
 import "../App.css";
 import "./HeroSection.css";
-import Axios from "axios";
+// import Axios from "axios";
 
 function HeroSection() {
-  const [quotes, setQuotes] = useState([]);
+  // const [quotes, setQuotes] = useState([]);
 
   // Inspirational quotes API
 
-  useEffect(() => {
-    Axios.get("https://type.fit/api/quotes").then((data) => {
-      console.log("This is from HeroSection.js data ------- ", data);
-      setQuotes(data.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get("https://type.fit/api/quotes").then((data) => {
+  //     // console.log("This is from HeroSection.js data ------- ", data);
+  //     setQuotes(data.data);
+  //   });
+  // }, []);
 
   return (
     <div className="hero-container">

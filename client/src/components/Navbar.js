@@ -16,6 +16,7 @@ function Navbar(props) {
   }, []);
 
   const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -31,11 +32,14 @@ function Navbar(props) {
           <Link
             to="/"
             className="navbar-logo"
+            onClick={closeMobileMenu}
             style={{ textDecoration: "none" }}
           >
             V-OPP
           </Link>
-          <div className="menu-icon" onClick={handleClick}></div>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {!props.loggedIn ? (
               <>
@@ -44,6 +48,7 @@ function Navbar(props) {
                     to="/login"
                     className="nav-links"
                     style={{ textDecoration: "none" }}
+                    onClick={closeMobileMenu}
                   >
                     Login
                   </Link>

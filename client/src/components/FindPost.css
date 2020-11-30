@@ -9,6 +9,7 @@
 }
 
 .post-btn {
+  position: relative;
   border-radius: 25px;
   width: 700px;
   height: 40px;

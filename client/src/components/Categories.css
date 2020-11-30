@@ -7,11 +7,9 @@
   color: #b1b1b1;
 }
 
-
 .categories__container :hover {
   color: #2998fe;
 }
-
 
 .fas {
   font-size: 2rem;
@@ -21,6 +19,7 @@
 .categories__icons {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .categories__grp {
@@ -30,4 +29,25 @@
 
 .cagetories__link {
   text-decoration: none;
+}
+
+@media screen and (max-width: 960px) {
+  .categories__container {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    color: #b1b1b1;
+  }
+
+  .categories__icons {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .fas {
+    font-size: 3rem;
+  }
 }

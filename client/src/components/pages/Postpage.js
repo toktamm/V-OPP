@@ -195,7 +195,7 @@ export default function PostPage(props) {
             <Form.Control
               placeholder="YYYY-MM-DD"
               autoFocus
-              type="date_posted"
+              type="date"
               value={date_posted}
               onChange={(e) => setDatePosted(e.target.value)}
             />
@@ -206,7 +206,7 @@ export default function PostPage(props) {
             <Form.Control
               placeholder="YYYY-MM-DD"
               autoFocus
-              type="start_date"
+              type="date"
               value={start_date}
               onChange={(e) => setStartDay(e.target.value)}
             />

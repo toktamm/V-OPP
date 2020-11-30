@@ -6,6 +6,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
 var categoriesRouter = require("./routes/categories");
+var applyRouter = require("./routes/apply");
 
 var cors = require("cors");
 
@@ -14,7 +15,6 @@ const dbHelpers = require("./helpers/dbHelpers")(db);
 
 var app = express();
 app.use(cors());
-
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -27,6 +27,6 @@ app.use("/", indexRouter);
 app.use("/api/users", usersRouter(dbHelpers));
 app.use("/api/posts", postsRouter(dbHelpers));
 app.use("/api/categories", categoriesRouter(dbHelpers));
-
+app.use("/api/apply", applyRouter(dbHelpers));
 
 module.exports = app;

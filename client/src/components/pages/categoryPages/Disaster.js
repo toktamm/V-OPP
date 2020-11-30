@@ -66,7 +66,7 @@ function Disaster() {
       {console.log("This is postList:      ", postList)}
       <div className="posts__container">
         {postList
-          .filter((category) => category.category === "Disaster/Relief")
+          .filter((category) => category.category === "Disaster")
           .map((filteredCategory) => (
             // <h1>{filteredCategory.title}</h1>
             <li className="posts__item">
