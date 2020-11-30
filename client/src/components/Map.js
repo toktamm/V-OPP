@@ -1,42 +1,4 @@
-// import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps/api";
-
-// import WrappedMap from './WrappedMap'
-
-
-
-// function Map() {
-//   return (
-//     <GoogleMap
-//       defaultZoom={10}
-//       defaultCenter={{ lat: 43.653225, lng: -79.383186 }}
-//     />
-//   );
-// }
-
-// const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-
-// export default function Map() {
-//   return (
-//     <div style={{ width: "100vw", height: "100vh" }}>
-//       <WrappedMap
-//         GoogleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
-//         loadingElement={<div style={{ height: "100%" }} />}
-//         containerElement={<div style={{ height: "100%" }} />}
-//         mapElement={<div style={{ height: "100%" }} />}
-//       />
-//     </div>
-//   );
-// }
-
-
-
 import React, { useState, useEffect } from "react";
-
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
 
 import Axios from "axios";
 
@@ -47,11 +9,10 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
-
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 
 
 import "./Map.css";
@@ -67,7 +28,7 @@ const center = {
   lng: -79.3832,
 };
 
-const libraries = ["places"];   //comment out
+const libraries = ["places"];
 
 
 
@@ -78,7 +39,7 @@ export default function Map(props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries,  //comment out
+    libraries,
   });
 
 
@@ -90,7 +51,10 @@ export default function Map(props) {
   // const [detailedPost, setDetailedPost] = useState([]);
 
   const [markers, setMarkers] = React.useState([]);
+  // const { lat, lng } = latLng;
 
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
 
 
   // useEffect(() => {
@@ -124,7 +88,7 @@ export default function Map(props) {
 
   const adressInOneLine = `${addressObj.streetAddress}, ${addressObj.cityName}, ${addressObj.provinceName}, ${addressObj.postCode}`
   console.log("addressInOneLine isss: ", adressInOneLine)
-  
+
   // const addressFormatNeeded = {
   //   address: "Section 5, Xinyi Road, Xinyi District, Taipei City, Taiwan",
   // };
@@ -181,20 +145,53 @@ export default function Map(props) {
 
 
 
-    const address = {
-      address: adressInOneLine,
-    };
-     
-    getGeocode(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        const { lat, lng } = latLng;
-     
-        console.log("Coordinates: ", { lat, lng });
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
+  const address = {
+    address: adressInOneLine,
+  };
+
+  getGeocode(address)
+    .then((results) => getLatLng(results[0]))
+    .then((latLng) => {
+      const { lat, lng } = latLng;
+      setLat(latLng.lat);
+      setLng(latLng.lng);
+      console.log("latLng.lat iiissss: ", latLng.lat)
+
+      console.log("Coordinates: ", { lat, lng });
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+    });
+
+
+  console.log("gerGeocode(adress) isss: ", getGeocode(address))
+
+
+
+  const lati = getGeocode(address)
+    .then((results) => getLatLng(results[0]))
+    .then((latLng) => {
+      const { lat, lng } = latLng;
+      console.log("latLng.lat iiissss: ", latLng.lat)
+
+      console.log("Coordinates: ", { lat, lng });
+
+      return latLng.lat;
+
+    })
+
+
+  console.log("lati is: ", lati)
+
+  // const latitude = lati.resolve(latLng.lat)
+
+
+  // console.log("latitude iisssss: ", latitude)
+
+
+  // const lngi = latLng.lng;
+
+
 
 
 
@@ -207,27 +204,32 @@ export default function Map(props) {
         <img className="logo" src="images/volunteer-logo.png" />
       </h1>
       {console.log("streetAddress inside return in Map is: ", streetAddress)}
+<h1>
+  {lat} {lng}
 
+</h1>
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={10}
+        zoom={9}
         center={center}
-        // options={options}
-        // onClick={onMapClick}
+      // options={options}
+      // onClick={onMapClick}
 
-        // getAddress={}
-        onClick={(event) => {
-          setMarkers(current => [...current, {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng()
-          }])
-        }}
+      // onClick={(event) => {
+      //   setMarkers(current => [...current, {
+      //     lat: event.latLng.lat(),
+      //     lng: event.latLng.lng()
+      //   }])
+      // }}
+
+
       // onLoad={onMapLoad}
       >
-        {markers.map(marker => <Marker
-          position={{ lat: marker.lat, lng: marker.lng }} />)}
+        {/* {markers.map(marker => <Marker
+          position={{ lat: marker.lati, lng: marker.lngi }} />)} */}
 
+        <Marker position={lat, lng} />
 
       </GoogleMap>
     </div>
