@@ -144,13 +144,13 @@ export default function Profile(props) {
           <br />
           <br />
           <Link
-            to={`/detailed/${key.id}`}
+            to={`/detailed/${key.post_id}`}
             className="profile__item__link"
             style={{ textDecoration: "none" }}
           >
             <button
               style={{ outline: "none" }}
-              onClick={() => props.setEachPostId(key.id)}
+              onClick={() => props.setEachPostId(key.post_id)}
               className="profile__volunteer__btn"
             >
               view
