@@ -103,31 +103,6 @@ export default function Map(props) {
 
 
 
-  //   async (streetAddress, cityName, provinceName, postCode) => {
-  //   try {
-  //     const results = await getGeocode({ streetAddress, cityName, provinceName, postCode });
-  //     console.log("results of getGeocode is: ", results)
-  //     const { lat, lng } = await getLatLng(results[0])
-  //   } catch (error) {
-  //     console.log("😱 Error: ", error);
-  //   }
-  // };
-
-
-
-  // getGeocode(streetAddress)
-  //   .then((results) =>
-  //     console.log("results of getGeocode is: ", results)
-  //     // getLatLng(results[0])
-  //   )
-  //   .then(({ lat, lng }) => {
-  //     console.log("📍 Coordinates: ", { lat, lng });
-  //   })
-  //   .catch((error) => {
-  //     console.log("😱 Error: ", error);
-  //   });
-
-
 
   const address = {
     address: adressInOneLine,
