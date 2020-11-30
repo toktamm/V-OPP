@@ -173,7 +173,7 @@ export default function Profile(props) {
             <Card style={{ width: "20rem" }}>
               <Card.Img variant="top" src="images/img-6.jpg" />
               <Card.Body>
-                <Card.Title>↓↓The best volunteer ever↙↙ </Card.Title>
+                <Card.Title>↓↓The best volunteer ever↓↓ </Card.Title>
                 <Card.Title>{props.user.first_name}</Card.Title>
               </Card.Body>
             </Card>
