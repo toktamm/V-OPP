@@ -211,7 +211,7 @@ export default function Profile(props) {
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  Current Postings
+                  Current Volunteer Postings
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">

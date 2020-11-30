@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Categories.css";
 
-function Categories() {
+function Categories(props) {
   return (
     <div className="categories__container">
       <div className="categories__icons">
@@ -21,6 +21,7 @@ function Categories() {
           to="/arts"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-palette"></i>
@@ -31,6 +32,7 @@ function Categories() {
           to="/animals"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-dog"></i>
@@ -41,6 +43,7 @@ function Categories() {
           to="/youth"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-child"></i>
@@ -51,6 +54,7 @@ function Categories() {
           to="/community"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-users"></i>
@@ -62,6 +66,7 @@ function Categories() {
           to="/disaster"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-cloud-showers-heavy"></i>
@@ -72,6 +77,7 @@ function Categories() {
           to="/education"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-university"></i>
@@ -82,6 +88,7 @@ function Categories() {
           to="/environment"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-tree"></i>
@@ -92,6 +99,7 @@ function Categories() {
           to="/religious"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-church"></i>
@@ -102,6 +110,7 @@ function Categories() {
           to="/health"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-hospital"></i>
@@ -112,6 +121,7 @@ function Categories() {
           to="/seniors"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-male"></i>
@@ -122,6 +132,7 @@ function Categories() {
           to="/sports"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}
+          setEachPostId={props.setEachPostId}
         >
           <div className="categories__grp">
             <i class="fas fa-futbol"></i>
