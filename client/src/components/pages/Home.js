@@ -40,10 +40,10 @@ function Home(props) {
   };
   return (
     <>
-      <FindPost />
+      <FindPost user={props.user} />
       <HeroSection />
       <Categories />
-      <Posts setEachPostId={props.setEachPostId}/>
+      <Posts setEachPostId={props.setEachPostId} />
     </>
   );
 }

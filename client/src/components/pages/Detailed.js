@@ -16,6 +16,9 @@ export default function Detailed({ eachPostId }) {
 
   const [postList, setpostList] = useState([]);
 
+
+ 
+
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
       // console.log("posts ------- ", data);
@@ -34,7 +37,26 @@ export default function Detailed({ eachPostId }) {
   console.log("postList is:", postList)
   const detailedPost = postList.find(post => post.id === eachPostId);
   console.log("detailedPost is:", detailedPost)
-  return (
+  const post = useState("ss");
+
+
+
+  function handleSubmit(event) {
+    event.preventDefault();
+ 
+
+    return Axios
+      .post("http://localhost:3001/api/users", post)
+      .then((res) => {
+        console.log("this is data: ", post)
+        console.log("this is response: ", res);
+      })
+      .catch((err) => {
+        console.log("Received an error: ", err);
+      });
+  }
+
+    return (
 
     // <li>{detailedPost?.title}</li>
     // <li>{detailedPost?.category}</li>
@@ -59,7 +81,12 @@ export default function Detailed({ eachPostId }) {
             <h5 className="posts__item__text">
               {detailedPost?.description}
             </h5>
-            <button className="posts__volunteer__btn">Volunteer</button>
+
+            <button 
+           
+            >
+               Volunteer</button>
+
             <button className="posts__volunteer__btn">Contact Us</button>
 
           </div>

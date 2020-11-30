@@ -11,6 +11,37 @@ section.card {
 section.card2 {
   margin: 5em;
   width: 75%;
-}  
+}
+/* 
+.profile__volunteer__btn {
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  border: none;
+  background-color: white;
+} */
 
+.profile__volunteer__btn {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background: #e7e7e7;
+  border-radius: 15px;
+  width: 70px;
+  height: 30px;
+}
 
+.profile__volunteer__btn:hover {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  color: #fff;
+  background: #2998fe;
+}
+
+/* 
+.profile__current__postings {
+  display: block;
+} */

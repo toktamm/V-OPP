@@ -29,7 +29,6 @@ module.exports = ({ getPosts, addPost, getUsersPosts }) => {
 
   router.post("/", (req, res) => {
     const {
-      user_id,
       category,
       title,
       organization,
@@ -44,11 +43,11 @@ module.exports = ({ getPosts, addPost, getUsersPosts }) => {
       start_date,
       requirements,
       additional_info,
+      user_id,
     } = req.body;
 
     console.log("req.body is ", req.body);
     addPost(
-      user_id,
       category,
       title,
       organization,
@@ -62,7 +61,8 @@ module.exports = ({ getPosts, addPost, getUsersPosts }) => {
       date_posted,
       start_date,
       requirements,
-      additional_info
+      additional_info,
+      user_id
     )
       .then((newPost) => res.json(newPost))
       .catch((err) =>

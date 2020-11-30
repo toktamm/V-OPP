@@ -28,7 +28,11 @@ function Navbar(props) {
       {props.loggedIn}
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link
+            to="/"
+            className="navbar-logo"
+            style={{ textDecoration: "none" }}
+          >
             V-OPP
           </Link>
           <div className="menu-icon" onClick={handleClick}></div>
@@ -36,29 +40,50 @@ function Navbar(props) {
             {!props.loggedIn ? (
               <>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-links">
-                    login
+                  <Link
+                    to="/login"
+                    className="nav-links"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Login
                   </Link>
                 </li>
 
-            <li className="nav-item">
-              <Link to="/register" className="nav-links">
-                register
-              </Link>
-            </li>
-            </>
-             ) :
-            <>
-              <li >
-              <Link  className="nav-links" to="/profile"> Hi {props.user && props.user.first_name} </Link>
-            </li> 
+                <li className="nav-item">
+                  <Link
+                    to="/register"
+                    className="nav-links"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    className="nav-links"
+                    to="/profile"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {" "}
+                    Hi {props.user && props.user.first_name}{" "}
+                  </Link>
+                </li>
 
-            
-            <li >
-              <Link onClick={logout} className="nav-links">  Logout </Link>
-            </li>
-            </>
-            }
+                <li>
+                  <Link
+                    onClick={logout}
+                    className="nav-links"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {" "}
+                    Logout{" "}
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>

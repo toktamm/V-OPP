@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import "./Categories.css";
 
 function Categories() {
-
   return (
     <div className="categories__container">
       <div className="categories__icons">
-      <Link
+        <Link
           to="/"
           className="categories__link"
           style={{ textDecoration: "none", color: "#b1b1b1" }}

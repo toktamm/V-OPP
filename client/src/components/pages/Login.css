@@ -7,23 +7,36 @@
     margin: 0 auto;
     max-width: 320px;
   }
-} 
-
-.NavLink {
-  padding-top:200px
 }
 
-body, html {
+.NavLink {
+  padding-top: 200px;
+}
+
+body,
+html {
   height: 100%;
-  }
-  .bg {
-  background-image:src("images/img-9.jpg");
+}
+.bg {
+  background-image: src("images/img-9.jpg");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  } 
+}
 
-  .alert {
-    text-align: center;
-  }
+.alert {
+  text-align: center;
+}
+
+.form-label {
+  color: rgb(0, 0, 0);
+}
+
+.navbar-item {
+  color: #fff;
+}
+
+.navbar-item:hover {
+  color: #fff;
+}

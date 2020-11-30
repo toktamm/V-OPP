@@ -62,24 +62,51 @@ import "./App.css";
 // };
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
   const [eachPostId, setEachPostId] = useState(7);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
-  useEffect(()=>{
-    let token = localStorage.getItem('token')
-    token ? setLoggedIn(true) : setLoggedIn(false)
-  },[])
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    token ? setLoggedIn(true) : setLoggedIn(false);
+  }, []);
   return (
     <>
       {/* <h1>TEST REFRESH</h1> */}
       <Router>
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}  user = {user} />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
         <Switch>
-          <Route path="/" exact component={() => <Home setEachPostId={setEachPostId} />} />
-          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser}/>} />
-          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser} user = {user} />}/>
-          <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
+          <Route
+            path="/"
+            exact
+            component={() => <Home setEachPostId={setEachPostId} user={user} />}
+          />
+          <Route
+            path="/register"
+            component={() => (
+              <Register
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn}
+                setUser={setUser}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/login"
+            component={() => (
+              <Login
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn}
+                setUser={setUser}
+                user={user}
+              />
+            )}
+          />
+          <Route
+            path="/detailed/:id"
+            component={() => <Detailed eachPostId={eachPostId} />}
+          />
           <Route path="/detailed" component={Detailed} />
           <Route path="/arts" component={Arts} />
           <Route path="/animals" component={Animals} />
@@ -92,9 +119,19 @@ function App() {
           <Route path="/health" component={Health} />
           <Route path="/seniors" component={Seniors} />
           <Route path="/sports" component={Sports} />
-          <Route path="/profile" component={() => <Profile user = {user}/>} />
+          <Route
+            path="/profile"
+            component={() => (
+              <Profile
+                user={user}
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+              />
+            )}
+          />
           <Route path="/findpage" component={Findpage} />
-          <Route path="/postpage" component={Postpage} />
+          {/* <Route path="/postpage" component={Postpage} /> */}
+          <Route path="/postpage" component={() => <Postpage user={user} />} />
         </Switch>
       </Router>
       <UserProvider></UserProvider>

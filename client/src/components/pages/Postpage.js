@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import FindPost from "../FindPost";
 
-export default function PostPage() {
+export default function PostPage(props) {
   const [category, setCategories] = useState("");
   const [title, setTitle] = useState("");
   const [organization, setOrganization] = useState("");
@@ -25,10 +25,13 @@ export default function PostPage() {
   const [start_date, setStartDay] = useState("");
   const [requirements, setRequirement] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
+  // const [user_Id, setUser_Id] = useState("");
+
   const history = useHistory();
 
   function handleSubmit(event) {
     event.preventDefault();
+    let user_id = props.user.id;
     let data = {
       category,
       title,
@@ -44,10 +47,12 @@ export default function PostPage() {
       start_date,
       requirements,
       additional_info,
+      user_id,
     };
     return axios
       .post("http://localhost:3001/api/posts", data)
       .then((respond) => {
+        console.log("this is data: ", data);
         console.log("this is respond: ", respond);
         history.push("/");
       })
@@ -58,6 +63,11 @@ export default function PostPage() {
 
   return (
     <section className="PostPage">
+      <h1>
+        {console.log(
+          "this is props from Postpage.js            " + props.user.id
+        )}
+      </h1>
       <FindPost />
       <Image className="imgPost" src="images/img-5.jpg" />
       <Form onSubmit={handleSubmit}>
@@ -73,7 +83,7 @@ export default function PostPage() {
           </Form.Group>
 
           <Form.Group size="lg" as={Col} controlId="organization">
-            <Form.Label>Organization name</Form.Label>
+            <Form.Label>Organization Name</Form.Label>
             <Form.Control
               autoFocus
               type="organization"
@@ -83,7 +93,7 @@ export default function PostPage() {
           </Form.Group>
 
           <Form.Group size="lg" as={Col} controlId="positions_available">
-            <Form.Label>Positions available </Form.Label>
+            <Form.Label>Positions Available </Form.Label>
             <Form.Control
               autoFocus
               type="positions_available"
@@ -135,7 +145,7 @@ export default function PostPage() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="post_code">
-            <Form.Label>Zip</Form.Label>
+            <Form.Label>Postal Code</Form.Label>
             <Form.Control
               autoFocus
               type="post_code"
@@ -183,7 +193,7 @@ export default function PostPage() {
           <Form.Group as={Col} controlId="date_posted">
             <Form.Label>Date Posted</Form.Label>
             <Form.Control
-              placeholder="Year-Month-date"
+              placeholder="YYYY-MM-DD"
               autoFocus
               type="date_posted"
               value={date_posted}
@@ -194,7 +204,7 @@ export default function PostPage() {
           <Form.Group as={Col} controlId="start_date">
             <Form.Label>Start Date</Form.Label>
             <Form.Control
-              placeholder="Year-Month-date"
+              placeholder="YYYY-MM-DD"
               autoFocus
               type="start_date"
               value={start_date}
@@ -219,7 +229,7 @@ export default function PostPage() {
 
         <InputGroup className="input">
           <InputGroup.Prepend>
-            <InputGroup.Text>Addition information</InputGroup.Text>
+            <InputGroup.Text>Addition Information</InputGroup.Text>
           </InputGroup.Prepend>
           <Form.Control
             as="textarea"
@@ -233,7 +243,7 @@ export default function PostPage() {
 
         <InputGroup className="thumbnail_photo_url">
           <InputGroup.Prepend>
-            <InputGroup.Text>Upload an image URL</InputGroup.Text>
+            <InputGroup.Text>Input an Image URL</InputGroup.Text>
           </InputGroup.Prepend>
           <Form.Control
             autoFocus

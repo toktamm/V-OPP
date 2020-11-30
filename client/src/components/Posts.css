@@ -18,6 +18,23 @@
   height: 40px;
 }
 
+.posts__search__input:hover {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  color: #fff;
+  background: #2998fe;
+  border-radius: 25px;
+  width: 700px;
+  height: 40px;
+}
+
+:hover::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+}
+
 .fa-search {
   font-size: 20px;
 }
@@ -27,7 +44,7 @@
   justify-content: center;
   /* background-color: #e7e7e7; */
   border: none;
-  color: black;
+  color: #e7e7e7;
   padding: 80px 200px 30px 200px;
   text-align: center;
   /* text-decoration: none; */

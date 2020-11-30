@@ -128,6 +128,26 @@ module.exports = (db) => {
       });
   };
 
+  const addApplication = (post) => {
+    const query = {
+      text: `INSERT INTO users (post) VALUES ($1) RETURNING *`,
+      values: [post],
+    };
+
+    return db
+      .query(query)
+      .then((result) => {
+        console.log("result is ", result);
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log("error is: ", err);
+        return err;
+      });
+  };
+
+
+
   const getUsersPosts = () => {
     const query = {
       text: `SELECT users.id as user_id, first_name, last_name, email, posts.id as post_id, category, title, organization, description, thumbnail_photo_url
@@ -154,7 +174,6 @@ module.exports = (db) => {
   };
 
   const addPost = (
-    user_id,
     category,
     title,
     organization,
@@ -168,10 +187,11 @@ module.exports = (db) => {
     date_posted,
     start_date,
     requirements,
-    additional_info
+    additional_info,
+    user_id
   ) => {
     const query = {
-      text: `INSERT INTO posts (user_id,
+      text: `INSERT INTO posts (
         category,
         title,
         organization,
@@ -185,9 +205,8 @@ module.exports = (db) => {
         date_posted,
         start_date,
         requirements,
-        additional_info) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
+        additional_info, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
       values: [
-        user_id,
         category,
         title,
         organization,
@@ -202,6 +221,7 @@ module.exports = (db) => {
         start_date,
         requirements,
         additional_info,
+        user_id,
       ],
     };
 
@@ -233,9 +253,11 @@ module.exports = (db) => {
     getUsers,
     getUserByEmail,
     addUser,
+    addApplication,
     getUsersPosts,
     getPosts,
     addPost,
     getCategories,
+
   };
 };
