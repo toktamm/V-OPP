@@ -41,9 +41,8 @@ import "./App.css";
 // };
 
 function App() {
-<<<<<<< HEAD
   const [loggedIn, setLoggedIn] = useState(false);
-  const [eachPostId, setEachPostId] = useState(7);
+  const [eachPostId, setEachPostId] = useState("");
   const [user, setUser] = useState(null);
   const [applyUser, setApplyUser] = useState();
   const [postList, setpostList] = useState([]);
@@ -52,20 +51,11 @@ function App() {
     let token = localStorage.getItem("token");
     token ? setLoggedIn(true) : setLoggedIn(false);
   }, []);
-=======
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [eachPostId, setEachPostId] = useState("");
-  useEffect(()=>{
-    let token = localStorage.getItem('token')
-    token ? setLoggedIn(true) : setLoggedIn(false)
-  },[])
->>>>>>> feature/detailed
   return (
     <>
       <Router>
         <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
         <Switch>
-<<<<<<< HEAD
           <Route
             path="/"
             exact
@@ -244,27 +234,6 @@ function App() {
               />
             )}
           />
-=======
-
-          <Route path="/" exact component={() => <Home setEachPostId={setEachPostId}/>} />
-
-          <Route path="/login" component={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/register" component={() => <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/detailed/:id" component={() => <Detailed eachPostId={eachPostId}/>} />
-
-          <Route path="/arts" component={Arts} />
-          <Route path="/animals" component={Animals} />
-          <Route path="/youth" component={Youth} />
-          <Route path="/community" component={Community} />
-          <Route path="/disaster" component={Disaster} />
-          <Route path="/education" component={Education} />
-          <Route path="/environment" component={Environment} />
-          <Route path="/religious" component={Religious} />
-          <Route path="/health" component={Health} />
-          <Route path="/seniors" component={Seniors} />
-          <Route path="/sports" component={Sports} />
-
->>>>>>> feature/detailed
           <Route path="/findpage" component={Findpage} />
           {/* <Route path="/postpage" component={Postpage} /> */}
           <Route path="/postpage" component={() => <Postpage user={user} />} />
