@@ -14,6 +14,7 @@ import Axios from "axios";
 
 export default function Profile(props) {
   const [userPost, setUserPost] = useState([]);
+  const [applyUser, setApplyUser] = useState([]);
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
@@ -22,8 +23,25 @@ export default function Profile(props) {
     });
   }, []);
 
-  console.log("userPost is:", userPost);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/apply").then((data) => {
+      console.log("This is from Apply.js data ------- ", data);
+      setApplyUser(data.data);
+    });
+  }, []);
 
+  // console.log("userPost is:", userPost);
+
+  // console.log(
+  //   "This is from Profile.js, ------------ props.user.id =   ",
+  //   props.user.id
+  // );
+  // console.log(
+  //   "AND this is also from Profile.js, ------------ apply_users.user_id =   ",
+  //   apply_users.user_id
+  // );
+
+  console.log("applyUser --------", applyUser);
   const eachUsersPosts = userPost
     .filter((post) => post.user_id === props.user.id)
     .map((key) => {
@@ -55,6 +73,8 @@ export default function Profile(props) {
         </div>
       );
     });
+
+  // console.log("eachUsersPosts is:", eachUsersPosts);
 
   // PENDING USER APPLICATIONS - *FEATURE NEED TO IMPLEMENT
 
@@ -102,7 +122,39 @@ export default function Profile(props) {
       );
     });
 
-  console.log("eachUsersPosts is:", eachUsersPosts);
+  // USERS APPLIED VOLUNTEER
+
+  const volunteeredApplications = applyUser
+    .filter((post) => post.users_id === props.user.id)
+    .map((key) => {
+      return (
+        <div className="profile__current__postings">
+          <h6>
+            <u>Title:</u> {key.title}
+          </h6>
+          <h6>
+            <u>Organization:</u> {key.organization}
+          </h6>
+          <br />
+          <Link
+            to={`/detailed/${key.id}`}
+            className="profile__item__link"
+            style={{ textDecoration: "none" }}
+          >
+            <button
+              style={{ outline: "none" }}
+              onClick={() => props.setEachPostId(key.id)}
+              className="profile__volunteer__btn"
+            >
+              view
+            </button>
+          </Link>
+
+          <br />
+          <br />
+        </div>
+      );
+    });
 
   return (
     <>
@@ -144,21 +196,9 @@ export default function Profile(props) {
               </tr>
               <tr></tr>
             </tbody>
-
-            {/* <thead>
-              <tr>
-                <th colSpan="3">Volunteer Postings</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colSpan="3">{eachUsersPosts}</td>
-              </tr>
-              <tr></tr>
-            </tbody> */}
           </Table>
 
-          <Accordion defaultActiveKey="0">
+          <Accordion>
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
@@ -182,21 +222,22 @@ export default function Profile(props) {
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
+
+            {/* APPLIED VOLUNTEER OPPORTUNITIES */}
+
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                  Applied Volunteer Applications
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="2">
+                <Card.Body>{volunteeredApplications}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
           </Accordion>
         </section>
       </div>
-
-      {/* {eachUsersPosts?.title} */}
-      {/* {userPost.find((element) => element.city === "Toronto")} */}
-      {/* {userPost.map((post) => (
-            <h1>{post.user_id}</h1>
-          ))} */}
-      {/* {userPost.filter((val) => {
-            if (val.user_id === "8") {
-              return val;
-            }
-            return val;
-          })} */}
     </>
   );
 }

@@ -229,6 +229,36 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+  const getApplyUserPosts = () => {
+    const query = {
+      text:
+        "SELECT apply_users.users_id, apply_users.post_id, posts.title, posts.organization, posts.category, posts.description, users.id FROM ((apply_users INNER JOIN users ON apply_users.users_id = users.id) INNER JOIN posts ON apply_users.post_id = posts.id);",
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+  };
+
+  const applyUserPosts = (users_id, post_id) => {
+    const query = {
+      text: `INSERT INTO apply_users (
+        users_id,
+        post_id) VALUES ($1, $2) RETURNING *`,
+      values: [users_id, post_id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => {
+        return result.rows[0];
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
   return {
     getUsers,
     getUserByEmail,
@@ -237,5 +267,7 @@ module.exports = (db) => {
     getPosts,
     addPost,
     getCategories,
+    getApplyUserPosts,
+    applyUserPosts,
   };
 };

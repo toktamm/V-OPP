@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import useApplicationData from "./hooks/useApplicationData";
+// import useApplicationData from "./hooks/useApplicationData";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
@@ -65,6 +65,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [eachPostId, setEachPostId] = useState(7);
   const [user, setUser] = useState(null);
+  const [applyUser, setApplyUser] = useState();
+  const [postList, setpostList] = useState([]);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -79,7 +81,13 @@ function App() {
           <Route
             path="/"
             exact
-            component={() => <Home setEachPostId={setEachPostId} user={user} />}
+            component={() => (
+              <Home
+                eachPostId={eachPostId}
+                setEachPostId={setEachPostId}
+                user={user}
+              />
+            )}
           />
           <Route
             path="/register"
@@ -105,11 +113,24 @@ function App() {
           />
           <Route
             path="/detailed/:id"
-            component={() => <Detailed eachPostId={eachPostId} />}
+            component={() => (
+              <Detailed
+                eachPostId={eachPostId}
+                user={user}
+                applyUser={applyUser}
+                setApplyUser={setApplyUser}
+                postList={postList}
+              />
+            )}
           />
           <Route path="/detailed" component={Detailed} />
           <Route path="/arts" component={Arts} />
-          <Route path="/animals" component={Animals} />
+          <Route
+            path="/animals"
+            component={Animals}
+            eachPostId={eachPostId}
+            setEachPostId={setEachPostId}
+          />
           <Route path="/youth" component={Youth} />
           <Route path="/community" component={Community} />
           <Route path="/disaster" component={Disaster} />
@@ -126,6 +147,8 @@ function App() {
                 user={user}
                 eachPostId={eachPostId}
                 setEachPostId={setEachPostId}
+                applyUser={applyUser}
+                setApplyUser={setApplyUser}
               />
             )}
           />

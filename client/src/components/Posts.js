@@ -11,15 +11,15 @@ function Posts(props) {
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
-      console.log("This is from Posts.js data ------- ", data);
+      // console.log("This is from Posts.js data ------- ", data);
       setpostList(data.data);
     });
   }, []);
   return (
     <>
-      {console.log(
+      {/* {console.log(
         "this is from Posts.js, props.user.id           " + props.id
-      )}
+      )} */}
       <div className="posts__search__container">
         {/* <i class="fas fa-search"></i> */}
         <input
@@ -36,7 +36,7 @@ function Posts(props) {
       <div className="posts__container">
         {postList
           .filter((val) => {
-            if (searchTerm == "") {
+            if (searchTerm === "") {
               return val;
             } else if (
               val.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
