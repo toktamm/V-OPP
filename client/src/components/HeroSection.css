@@ -25,3 +25,11 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
+
+@media screen and (max-width: 960px) {
+  .hero-container > h3 {
+    color: #ffffff;
+    font-size: 250%;
+    text-align: center;
+  }
+}

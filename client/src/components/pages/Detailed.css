@@ -3,10 +3,14 @@
   flex-direction: column;
   height: "35vh";
   width: "10";
-  border-radius: 25px;
+  border-radius: 10px;
 }
 
 .posts__volunteer__btn {
   width: 50%;
+  border-radius: 25px;
+}
+
+.detailed__button {
   border-radius: 25px;
 }

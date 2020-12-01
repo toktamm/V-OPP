@@ -59,6 +59,7 @@ function Navbar(props) {
                     to="/register"
                     className="nav-links"
                     style={{ textDecoration: "none" }}
+                    onClick={closeMobileMenu}
                   >
                     Register
                   </Link>
@@ -71,6 +72,7 @@ function Navbar(props) {
                     className="nav-links"
                     to="/profile"
                     style={{ textDecoration: "none" }}
+                    onClick={closeMobileMenu}
                   >
                     {" "}
                     Hi {props.user && props.user.first_name}{" "}

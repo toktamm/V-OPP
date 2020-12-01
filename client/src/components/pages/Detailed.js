@@ -3,10 +3,11 @@
 // import "../../App.css";
 import "./Detailed.css";
 
+import Modal from "react-bootstrap/Modal";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Posts from "../Posts";
 import Map from "../Map";
@@ -17,13 +18,11 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function Detailed(props) {
-
   // delete the following line if everything is working
   // export default function Detailed({ eachPostId }) {
 
   // console.log("eachPostId on the Detailed is", eachPostId);
   // console.log("pathname", window.location.pathname);
-
 
   const history = useHistory();
 
@@ -47,19 +46,13 @@ export default function Detailed(props) {
       });
   }
 
-
-
   const [postList, setpostList] = useState([]);
-
-
- 
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
       setpostList(data.data);
     });
   }, []);
-
 
   // // this function is not being used
   // const getPostTitle = (postId) => {
@@ -73,13 +66,15 @@ export default function Detailed(props) {
 
   const detailedPost = postList.find((post) => post.id === props.eachPostId);
 
-
   // for eachPostId (old)
   // console.log("postList in Detailed is:", postList)
   // const detailedPost = postList.find(post => post.id === eachPostId);
   // console.log("detailedPost on the Detailed is:", detailedPost)
 
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <li className="posts__item">
@@ -96,28 +91,68 @@ export default function Detailed(props) {
             <h6 style={{ textDecoration: "underline" }}>
               {detailedPost?.organization}
             </h6>
-            <h5 className="posts__item__text">
-            {detailedPost?.description}
-          </h5>
-          <h6 className="posts__item__address">
-            {detailedPost?.street}, {detailedPost?.city}, {detailedPost?.province}, {detailedPost?.post_code}
-          </h6>
-          <h6 className="posts__item__positions">
-            Positions Available: {detailedPost?.positions_available}
-          </h6>
-          {/* <button className="posts__volunteer__btn">Volunteer</button>
+            <h5 className="posts__item__text">{detailedPost?.description}</h5>
+            <h6 className="posts__item__address">
+              {detailedPost?.street}, {detailedPost?.city},{" "}
+              {detailedPost?.province}, {detailedPost?.post_code}
+            </h6>
+            <h6 className="posts__item__positions">
+              Positions Available: {detailedPost?.positions_available}
+            </h6>
+            {/* <button className="posts__volunteer__btn">Volunteer</button>
             <button className="posts__volunteer__btn">Contact Us</button> */}
 
-          <Button onClick={handleSubmit} className="posts__volunteer__btn" block size="lg" type="submit">
-            Volunteer
-        </Button>
-          <Button className="posts__volunteer__btn" block size="lg" type="submit">
-            Contact Us
-        </Button>
-          <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
+            <Button
+              variant="primary"
+              onClick={handleShow}
+              className="posts__volunteer__btn"
+              block
+              size="lg"
+              type="submit"
+            >
+              Volunteer
+            </Button>
+            <Button
+              className="posts__volunteer__btn"
+              block
+              size="lg"
+              type="submit"
+            >
+              Contact Us
+            </Button>
+
+            <Modal show={show} onHide={handleClose} className="detailed__modal">
+              <Modal.Header closeButton>
+                <Modal.Title>Volunteer Opportunities</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Thank you {props.user.first_name} {props.user.last_name} for
+                your interest! {detailedPost?.organization} will be in contact
+                with you soon!
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="detailed__button"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="primary"
+                  onClick={(handleClose, handleSubmit)}
+                  className="detailed__button"
+                >
+                  Confirm
+                </Button>
+              </Modal.Footer>
+            </Modal>
+
+            <br />
+            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
           </div>
         </figure>
       </div>
-    </li >
+    </li>
   );
 }
