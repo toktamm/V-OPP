@@ -36,10 +36,15 @@ export default function Detailed(props) {
       users_id,
       post_id,
     };
+
+    // new
+    setPositions(positions - 1);
+
     return Axios.post("http://localhost:3001/api/apply", data)
       .then((respond) => {
         console.log("this is respond: ", respond);
-        history.push("/");
+        //new
+        history.push("/profile");
       })
       .catch((err) => {
         console.log("Got an error: ", err);
@@ -47,6 +52,14 @@ export default function Detailed(props) {
   }
 
   const [postList, setpostList] = useState([]);
+  const detailedPost = postList.find((post) => post.id === props.eachPostId);
+
+  // NEW
+
+  const [positions, setPositions] = useState(detailedPost?.positions_available);
+  useEffect(() => {
+    setPositions(detailedPost?.positions_available);
+  }, [detailedPost]);
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
@@ -63,8 +76,6 @@ export default function Detailed(props) {
   //     return "";
   //   }
   // }
-
-  const detailedPost = postList.find((post) => post.id === props.eachPostId);
 
   // for eachPostId (old)
   // console.log("postList in Detailed is:", postList)
@@ -97,7 +108,8 @@ export default function Detailed(props) {
               {detailedPost?.province}, {detailedPost?.post_code}
             </h6>
             <h6 className="posts__item__positions">
-              Positions Available: {detailedPost?.positions_available}
+              {/* Positions Available: {detailedPost?.positions_available} */}
+              Positions Available: {positions}
             </h6>
             {/* <button className="posts__volunteer__btn">Volunteer</button>
             <button className="posts__volunteer__btn">Contact Us</button> */}
