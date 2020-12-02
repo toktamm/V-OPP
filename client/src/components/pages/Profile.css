@@ -1,10 +1,14 @@
+/* .parent {
+  background: url("https://images.pexels.com/photos/1587/blurred-background.jpg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  object-fit: cover;
+} */
+
 section.profile__card {
   margin: 5em;
   width: 20%;
   border-color: white;
   text-align: center;
-
-} 
+}
 
 .parent {
   display: flex;
@@ -49,15 +53,13 @@ section.card2 {
 } */
 
 @media screen and (max-width: 960px) {
-
   .parent {
-    display:contents ;
+    display: contents;
   }
 
   section.profile__card {
-  display: block;
+    display: block;
     margin-left: auto;
     margin-right: 50%;
-
-  } 
+  }
 }
