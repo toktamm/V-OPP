@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 import Dropdown from "react-bootstrap/Dropdown";
+
 function Navbar(props) {
   const history = useHistory();
 
@@ -27,6 +28,7 @@ function Navbar(props) {
   return (
     <>
       {props.loggedIn}
+      
       <nav className="navbar">
         <div className="navbar-container">
           <Link
@@ -35,6 +37,7 @@ function Navbar(props) {
             onClick={closeMobileMenu}
             style={{ textDecoration: "none" }}
           >
+        <img className="logo" src="./images/logo.png"  height={53}/>
             V-OPP
           </Link>
           <div className="menu-icon" onClick={handleClick}>
