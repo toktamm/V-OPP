@@ -14,9 +14,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-
 import "./Map.css";
-
 
 const mapContainerStyle = {
   height: "35vh",
@@ -30,21 +28,16 @@ const center = {
 
 const libraries = ["places"];
 
-
-
 export default function Map(props) {
-
   // console.log("eachPostId on Map is:", eachPostId)
-  console.log("props in Map is: ", props)
+  console.log("props in Map is: ", props);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-
   // const passIsLoadedToParent = props.passToParent(isLoaded);
-
 
   // const [postList, setpostList] = useState([]);
 
@@ -56,7 +49,6 @@ export default function Map(props) {
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
 
-
   // useEffect(() => {
   //   Axios.get("http://localhost:3001/api/posts").then((data) => {
   //     // console.log("posts ------- ", data);
@@ -64,14 +56,12 @@ export default function Map(props) {
   //   });
   // }, []);
 
-
   // console.log("postList in the Map is:", postList)
   // const detailedPost = postList.find(post => post.id === eachPostId);
   // console.log("detailedPost in the Map is:", detailedPost)
 
   // console.log("street in Map is: ", props?.detailedPost.street)
   // console.log("city in Map is: ", props?.detailedPost.city)
-
 
   const streetAddress = props?.detailedPost?.street;
   const cityName = props?.detailedPost?.city;
@@ -86,22 +76,16 @@ export default function Map(props) {
   const addressObj = { streetAddress, cityName, provinceName, postCode };
   console.log("let see what the addressObj is: ", addressObj);
 
-  const adressInOneLine = `${addressObj.streetAddress}, ${addressObj.cityName}, ${addressObj.provinceName}, ${addressObj.postCode}`
-  console.log("addressInOneLine isss: ", adressInOneLine)
-
-
-
+  const adressInOneLine = `${addressObj.streetAddress}, ${addressObj.cityName}, ${addressObj.provinceName}, ${addressObj.postCode}`;
+  console.log("addressInOneLine isss: ", adressInOneLine);
 
   if (loadError) return "Error Loading Maps";
   if (!isLoaded) return "Loading Maps";
-
 
   // const mapRef = React.useRef();
   // const onMapLoad = React.useCallback((map) => {
   //   mapRef.current = map;
   // }, []);
-
-
 
   //   async (streetAddress, cityName, provinceName, postCode) => {
   //   try {
@@ -112,8 +96,6 @@ export default function Map(props) {
   //     console.log("😱 Error: ", error);
   //   }
   // };
-
-
 
   // getGeocode(streetAddress)
   //   .then((results) =>
@@ -127,8 +109,6 @@ export default function Map(props) {
   //     console.log("😱 Error: ", error);
   //   });
 
-
-
   const address = {
     address: adressInOneLine,
   };
@@ -136,7 +116,7 @@ export default function Map(props) {
   getGeocode(address)
     .then((results) => getLatLng(results[0]))
     .then((latLng) => {
-      console.log("latLng.lat iiissss: ", latLng.lat)
+      console.log("latLng.lat iiissss: ", latLng.lat);
 
       const { lat, lng } = latLng;
 
@@ -145,23 +125,14 @@ export default function Map(props) {
       setLat(latLng.lat);
 
       setLng(latLng.lng);
-
     })
     .catch((error) => {
       console.log("Error: ", error);
     });
 
-
-
-
-
-
-
   return (
     <div>
-      <h1>
-        <img className="logo" src="images/volunteer-logo.png" />
-      </h1>
+      <h1>{/* <img className="logo" src="images/volunteer-logo.png" /> */}</h1>
       {console.log("streetAddress inside return in Map is: ", streetAddress)}
       {/* <h1>
         {lat} {lng}
@@ -171,35 +142,31 @@ export default function Map(props) {
         mapContainerStyle={mapContainerStyle}
         zoom={9}
         center={center}
-      // options={options}
-      // onClick={onMapClick}
+        // options={options}
+        // onClick={onMapClick}
 
-      // onClick={(event) => {
-      //   setMarkers(current => [...current, {
-      //     lat: event.latLng.lat(),
-      //     lng: event.latLng.lng()
-      //   }])
-      // }}
+        // onClick={(event) => {
+        //   setMarkers(current => [...current, {
+        //     lat: event.latLng.lat(),
+        //     lng: event.latLng.lng()
+        //   }])
+        // }}
 
         // marker = {setMarkers(current => [...current, {
         //   lat: lat,
         //   lng: lng
         // }])}
 
-
-      // onLoad={onMapLoad}
+        // onLoad={onMapLoad}
       >
         {/* {markers.map(marker => <Marker
           position={{ lat: marker.lati, lng: marker.lngi }} />)} */}
 
-        <Marker position={{lat, lng}} />
-
+        <Marker position={{ lat, lng }} />
       </GoogleMap>
     </div>
-  )
-
+  );
 }
-
 
 // change marker.time on line 107
 // this was ion line 107 inside teh Markey component : key={marker.time.toISOString()}

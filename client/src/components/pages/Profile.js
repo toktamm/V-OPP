@@ -1,4 +1,3 @@
-
 // import React from "react";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,7 +13,6 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 export default function Profile(props) {
-  
   const [userPost, setUserPost] = useState([]);
   const [applyUser, setApplyUser] = useState([]);
 
@@ -49,7 +47,7 @@ export default function Profile(props) {
     .map((key) => {
       return (
         <div className="profile__current__postings">
-          <u>Title:</u> {key.title}
+          <u>Role:</u> {key.title}
           <h6>
             <u>Organization:</u> {key.organization}
           </h6>
@@ -135,7 +133,7 @@ export default function Profile(props) {
       return (
         <div className="profile__current__postings">
           <h6>
-            <u>Title:</u> {key.title}
+            <u>Role:</u> {key.title}
           </h6>
           <h6>
             <u>Organization:</u> {key.organization}
@@ -213,7 +211,7 @@ export default function Profile(props) {
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  Current Volunteer Postings
+                  Volunteer Positions Posted by Me
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
@@ -241,7 +239,7 @@ export default function Profile(props) {
             <Card>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                  Applied Volunteer Applications
+                  Volunteer Positions I Applied To
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="2">

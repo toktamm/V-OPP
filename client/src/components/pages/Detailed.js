@@ -135,12 +135,16 @@ export default function Detailed(props) {
 
             <Modal show={show} onHide={handleClose} className="detailed__modal">
               <Modal.Header closeButton>
-                <Modal.Title>Volunteer Opportunities</Modal.Title>
+                <Modal.Title>
+                  {detailedPost?.organization} - {detailedPost?.title}
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 Thank you {props.user.first_name} {props.user.last_name} for
-                your interest! {detailedPost?.organization} will be in contact
-                with you soon!
+                your interest! By clicking Confirm you are submitting your
+                application for our review.
+                {/* {detailedPost?.organization} will be in contact
+                with you soon! */}
               </Modal.Body>
               <Modal.Footer>
                 <Button
