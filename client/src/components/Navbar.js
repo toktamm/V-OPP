@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
-
+import Dropdown from "react-bootstrap/Dropdown";
 function Navbar(props) {
   const history = useHistory();
 
@@ -75,7 +75,7 @@ function Navbar(props) {
                     onClick={closeMobileMenu}
                   >
                     {" "}
-                    Hi {props.user && props.user.first_name}{" "}
+                    Welcome {props.user && props.user.first_name}{" "}
                   </Link>
                 </li>
 

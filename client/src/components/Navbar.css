@@ -53,7 +53,10 @@
   height: 100%;
 }
 
-///////////////////////////////////////////
+.Dropdown.Menu{
+  margin-left:20px
+}
+
 
 .nav-links {
   color: #000000;

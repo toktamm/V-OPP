@@ -112,14 +112,14 @@ export default function Detailed(props) {
             >
               Volunteer
             </Button>
-            <Button
+            {/* <Button
               className="posts__volunteer__btn"
               block
               size="lg"
               type="submit"
             >
               Contact Us
-            </Button>
+            </Button> */}
 
             <Modal show={show} onHide={handleClose} className="detailed__modal">
               <Modal.Header closeButton>
