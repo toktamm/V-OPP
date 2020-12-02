@@ -11,7 +11,7 @@ function Categories(props) {
         <Link
           to="/"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
         >
           <div className="categories__text__icons">
             <i class="fas fa-home"></i>
@@ -23,7 +23,7 @@ function Categories(props) {
         <Link
           to="/arts"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -37,7 +37,7 @@ function Categories(props) {
         <Link
           to="/animals"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -51,7 +51,7 @@ function Categories(props) {
         <Link
           to="/youth"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -65,7 +65,7 @@ function Categories(props) {
         <Link
           to="/community"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -80,7 +80,7 @@ function Categories(props) {
         <Link
           to="/disaster"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -94,7 +94,7 @@ function Categories(props) {
         <Link
           to="/education"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -108,7 +108,7 @@ function Categories(props) {
         <Link
           to="/environment"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -122,7 +122,7 @@ function Categories(props) {
         <Link
           to="/religious"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -136,7 +136,7 @@ function Categories(props) {
         <Link
           to="/health"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -150,7 +150,7 @@ function Categories(props) {
         <Link
           to="/seniors"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}
@@ -164,7 +164,7 @@ function Categories(props) {
         <Link
           to="/sports"
           className="categories__link"
-          style={{ textDecoration: "none", color: "#b1b1b1" }}
+          style={{ textDecoration: "none", color: "#75A3A3" }}
           setEachPostId={props.setEachPostId}
         >
           {" "}

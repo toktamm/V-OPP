@@ -88,16 +88,17 @@ export default function Detailed(props) {
   const handleShow = () => setShow(true);
 
   return (
-    <li className="posts__item">
-      <div className="posts__wrapper">
-        <ul className="posts__items"></ul>
-        <figure className="posts__item__pic-wrap">
-          <img
-            className="posts__item__img"
+    <div className="posts__item">
+        <img
+            className="posts"
             src={detailedPost?.thumbnail_photo_url}
             alt="description"
           />
-          <div className="posts__item__info">
+        <ul className="posts__items"></ul>
+        
+          <div className="posts__text">
+            <div className="parent">
+            <div className="description">
             <h5 className="posts__item__title">{detailedPost?.title}</h5>
             <h6 style={{ textDecoration: "underline" }}>
               {detailedPost?.organization}
@@ -124,15 +125,11 @@ export default function Detailed(props) {
             >
               Volunteer
             </Button>
-            {/* <Button
-              className="posts__volunteer__btn"
-              block
-              size="lg"
-              type="submit"
-            >
-              Contact Us
-            </Button> */}
-
+            </div>
+              <div className="map">
+            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
+              </div>
+            </div>
             <Modal show={show} onHide={handleClose} className="detailed__modal">
               <Modal.Header closeButton>
                 <Modal.Title>
@@ -165,10 +162,7 @@ export default function Detailed(props) {
             </Modal>
 
             <br />
-            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
           </div>
-        </figure>
       </div>
-    </li>
   );
 }

@@ -17,13 +17,13 @@ import usePlacesAutocomplete, {
 import "./Map.css";
 
 const mapContainerStyle = {
-  height: "35vh",
-  width: "40vw",
+  height: "40.5vh",
+  width: "42vw",
 };
 
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 43.798043,
+  lng: -79.420052,
 };
 
 const libraries = ["places"];
@@ -132,7 +132,8 @@ export default function Map(props) {
 
   return (
     <div>
-      <h1>{/* <img className="logo" src="images/volunteer-logo.png" /> */}</h1>
+      <h1>
+      </h1>
       {console.log("streetAddress inside return in Map is: ", streetAddress)}
       {/* <h1>
         {lat} {lng}
