@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Post.css";
 
 import { Link } from "react-router-dom";
 
@@ -10,8 +9,6 @@ function Post(props) {
     <>
       {src && title && text && (
         <li className="posts__item">
-          {/* <div className="posts"> */}
-
           <div className="posts__wrapper">
             <ul className="posts__items"></ul>
             <figure className="posts__item__pic-wrap">
@@ -29,8 +26,6 @@ function Post(props) {
               </div>
             </figure>
           </div>
-
-          {/* </div> */}
         </li>
       )}
     </>

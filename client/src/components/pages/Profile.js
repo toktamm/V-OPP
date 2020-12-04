@@ -1,4 +1,3 @@
-// import React from "react";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
@@ -29,17 +28,6 @@ export default function Profile(props) {
       setApplyUser(data.data);
     });
   }, []);
-
-  // console.log("userPost is:", userPost);
-
-  // console.log(
-  //   "This is from Profile.js, ------------ props.user.id =   ",
-  //   props.user.id
-  // );
-  // console.log(
-  //   "AND this is also from Profile.js, ------------ apply_users.user_id =   ",
-  //   apply_users.user_id
-  // );
 
   console.log("applyUser --------", applyUser);
   const eachUsersPosts = userPost

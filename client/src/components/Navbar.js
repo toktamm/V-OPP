@@ -8,11 +8,8 @@ function Navbar(props) {
 
   const [click, setClick] = useState(false);
 
-  // const [loggedIn, setLoggedIn] = useState(false)
-
   useEffect(() => {
     let token = localStorage.getItem("token");
-    // props.setLoggedIn(false)
     token ? props.setLoggedIn(true) : props.setLoggedIn(false);
   }, []);
 
@@ -28,7 +25,7 @@ function Navbar(props) {
   return (
     <>
       {props.loggedIn}
-      
+
       <nav className="navbar">
         <div className="navbar-container">
           <Link
@@ -37,7 +34,7 @@ function Navbar(props) {
             onClick={closeMobileMenu}
             style={{ textDecoration: "none" }}
           >
-        <img className="logo" src="./images/logo.png"  height={53}/>
+            <img className="logo" src="./images/logo.png" height={53} />
             V-OPP
           </Link>
           <div className="menu-icon" onClick={handleClick}>

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// import useApplicationData from "./hooks/useApplicationData";
 import React, { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
@@ -24,21 +23,6 @@ import Postpage from "./components/pages/Postpage";
 import UserProvider from "./provider/UserProvider";
 
 import "./App.css";
-
-// const App = () => {
-//   const {
-//     state,
-//     dispatch
-//   } = useApplicationData();
-//   const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
-//   ));
-//   return (<div className="App" >
-//     <h1> Users </h1>
-
-//     <ul> {userList} </ul>
-//   </div >
-//   );
-// };
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -235,7 +219,6 @@ function App() {
             )}
           />
           <Route path="/findpage" component={Findpage} />
-          {/* <Route path="/postpage" component={Postpage} /> */}
           <Route path="/postpage" component={() => <Postpage user={user} />} />
         </Switch>
       </Router>

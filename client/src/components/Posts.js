@@ -10,17 +10,12 @@ function Posts(props) {
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
-      // console.log("This is from Posts.js data ------- ", data);
       setpostList(data.data);
     });
   }, []);
   return (
     <>
-      {/* {console.log(
-        "this is from Posts.js, props.user.id           " + props.id
-      )} */}
       <div className="posts__search__container">
-        {/* <i class="fas fa-search"></i> */}
         <input
           className="posts__search__input"
           style={{ outline: "none" }}

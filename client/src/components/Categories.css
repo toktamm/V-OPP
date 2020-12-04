@@ -19,8 +19,7 @@
 }
 
 .categories__grp :hover > .categories__text__icons {
-  color: #1C704F  ;
-  /* width: 100%; */
+  color: #1c704f;
 }
 
 .fas {

@@ -6,7 +6,6 @@ import "./Categories.css";
 function Categories(props) {
   return (
     <div className="categories__container">
-      {/* <div className="categories__icons"> */}
       <div className="categories__grp">
         <Link
           to="/"
@@ -174,7 +173,6 @@ function Categories(props) {
           </div>
         </Link>
       </div>
-      {/* </div> */}
     </div>
   );
 }

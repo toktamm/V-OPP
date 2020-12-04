@@ -19,11 +19,6 @@ export default function Login(props) {
     return email.length > 0 && password.length > 0;
   }
 
-  // // if there's a user show the message below
-  // if (email) {
-  //   return <div>{email} is loggged in</div>;
-  // }
-
   function handleSubmit(event) {
     event.preventDefault();
 

@@ -1,6 +1,3 @@
-// import React from "react";
-// import "../Posts.css";
-// import "../../App.css";
 import "./Detailed.css";
 
 import Modal from "react-bootstrap/Modal";
@@ -18,12 +15,6 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function Detailed(props) {
-  // delete the following line if everything is working
-  // export default function Detailed({ eachPostId }) {
-
-  // console.log("eachPostId on the Detailed is", eachPostId);
-  // console.log("pathname", window.location.pathname);
-
   const history = useHistory();
 
   // handleSubmit = SAVES 'APPLIED VOLUNTEER APPLICATION' ON PROFILE PAGE
@@ -37,13 +28,12 @@ export default function Detailed(props) {
       post_id,
     };
 
-    // new
     setPositions(positions - 1);
 
     return Axios.post("http://localhost:3001/api/apply", data)
       .then((respond) => {
         console.log("this is respond: ", respond);
-        //new
+
         history.push("/profile");
       })
       .catch((err) => {
@@ -53,8 +43,6 @@ export default function Detailed(props) {
 
   const [postList, setpostList] = useState([]);
   const detailedPost = postList.find((post) => post.id === props.eachPostId);
-
-  // NEW
 
   const [positions, setPositions] = useState(detailedPost?.positions_available);
   useEffect(() => {
@@ -67,21 +55,6 @@ export default function Detailed(props) {
     });
   }, []);
 
-  // // this function is not being used
-  // const getPostTitle = (postId) => {
-  //   if (postList.length > 0) {
-  //     // console.log("postList is this:", postList)
-  //     return postList[postId].title;
-  //   } else {
-  //     return "";
-  //   }
-  // }
-
-  // for eachPostId (old)
-  // console.log("postList in Detailed is:", postList)
-  // const detailedPost = postList.find(post => post.id === eachPostId);
-  // console.log("detailedPost on the Detailed is:", detailedPost)
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -89,16 +62,16 @@ export default function Detailed(props) {
 
   return (
     <div className="posts__item">
-        <img
-            className="posts"
-            src={detailedPost?.thumbnail_photo_url}
-            alt="description"
-          />
-        <ul className="posts__items"></ul>
-        
-          <div className="posts__text">
-            <div className="parent">
-            <div className="description">
+      <img
+        className="posts"
+        src={detailedPost?.thumbnail_photo_url}
+        alt="description"
+      />
+      <ul className="posts__items"></ul>
+
+      <div className="posts__text">
+        <div className="parent">
+          <div className="description">
             <h5 className="posts__item__title">{detailedPost?.title}</h5>
             <h6 style={{ textDecoration: "underline" }}>
               {detailedPost?.organization}
@@ -109,11 +82,8 @@ export default function Detailed(props) {
               {detailedPost?.province}, {detailedPost?.post_code}
             </h6>
             <h6 className="posts__item__positions">
-              {/* Positions Available: {detailedPost?.positions_available} */}
               Positions Available: {positions}
             </h6>
-            {/* <button className="posts__volunteer__btn">Volunteer</button>
-            <button className="posts__volunteer__btn">Contact Us</button> */}
 
             <Button
               variant="primary"
@@ -125,44 +95,42 @@ export default function Detailed(props) {
             >
               Volunteer
             </Button>
-            </div>
-              <div className="map">
-            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
-              </div>
-            </div>
-            <Modal show={show} onHide={handleClose} className="detailed__modal">
-              <Modal.Header closeButton>
-                <Modal.Title>
-                  {detailedPost?.organization} - {detailedPost?.title}
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                Thank you {props.user.first_name} {props.user.last_name} for
-                your interest! By clicking Confirm you are submitting your
-                application for our review.
-                {/* {detailedPost?.organization} will be in contact
-                with you soon! */}
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  variant="secondary"
-                  onClick={handleClose}
-                  className="detailed__button"
-                >
-                  Cancel
-                </Button>
-                <Button
-                  variant="primary"
-                  onClick={(handleClose, handleSubmit)}
-                  className="detailed__button"
-                >
-                  Confirm
-                </Button>
-              </Modal.Footer>
-            </Modal>
-
-            <br />
           </div>
+          <div className="map">
+            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
+          </div>
+        </div>
+        <Modal show={show} onHide={handleClose} className="detailed__modal">
+          <Modal.Header closeButton>
+            <Modal.Title>
+              {detailedPost?.organization} - {detailedPost?.title}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Thank you {props.user.first_name} {props.user.last_name} for your
+            interest! By clicking Confirm you are submitting your application
+            for our review.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={handleClose}
+              className="detailed__button"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={(handleClose, handleSubmit)}
+              className="detailed__button"
+            >
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <br />
       </div>
+    </div>
   );
 }

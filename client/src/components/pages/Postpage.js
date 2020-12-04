@@ -25,7 +25,6 @@ export default function PostPage(props) {
   const [start_date, setStartDay] = useState("");
   const [requirements, setRequirement] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
-  // const [user_Id, setUser_Id] = useState("");
 
   const history = useHistory();
 
