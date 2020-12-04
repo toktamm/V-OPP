@@ -20,10 +20,10 @@ A simple one-stop application where companies, charities and educational institu
 
 ---
 
-!["V-OPP Login"](https://github.com/toktamm/volunteer/docs/v_opp_login_screenshot.png?raw=true)
+!["V-OPP Login"](https://github.com/toktamm/volunteer/blob/master/docs/v_opp_login_screenshot.png?raw=true)
 
-!["V-OPP Main"](https://github.com/toktamm/volunteer/docs/v_opp_main_screenshot.png?raw=true)
+!["V-OPP Main"](https://github.com/toktamm/volunteer/blob/master/docs/v_opp_main_screenshot.png?raw=true)
 
-!["V-OPP Post"](https://github.com/toktamm/volunteer/docs/v_opp_post_screenshot.png?raw=true)
+!["V-OPP Post"](https://github.com/toktamm/volunteer/blob/master/docs/v_opp_post_screenshot.png?raw=true)
 
-!["V-OPP Detailed"](https://github.com/toktamm/volunteer/docs/v_opp_detailed_screenshot.png?raw=true)
+!["V-OPP Detailed"](https://github.com/toktamm/volunteer/blob/master/docs/v_opp_detailed_screenshot.png?raw=true)
