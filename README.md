@@ -2,13 +2,9 @@
 
 ## Product Description
 
----
-
 A simple one-stop application where companies, charities and educational institutions can quickly post available volunteer positions, and those seeking volunteer work/internships can easily apply to them. New users register on the site and create a profile that allows them to post and/or apply for available opportunities.
 
 ## Tech Stack
-
----
 
 - React
 - React Bootstrap
@@ -17,8 +13,6 @@ A simple one-stop application where companies, charities and educational institu
 - PostgreSQL
 
 ## Screenshots
-
----
 
 !["V-OPP Login"](https://github.com/toktamm/volunteer/blob/master/docs/v_opp_login_screenshot.png?raw=true)
 
