@@ -232,7 +232,7 @@ module.exports = (db) => {
   const getApplyUserPosts = () => {
     const query = {
       text:
-        "SELECT apply_users.users_id, apply_users.post_id, posts.title, posts.organization, posts.category, posts.description, users.id FROM ((apply_users INNER JOIN users ON apply_users.users_id = users.id) INNER JOIN posts ON apply_users.post_id = posts.id);",
+        "SELECT apply_users.users_id, apply_users.post_id, posts.title, posts.organization, posts.category, posts.description, posts.positions_available, users.id FROM ((apply_users INNER JOIN users ON apply_users.users_id = users.id) INNER JOIN posts ON apply_users.post_id = posts.id);",
     };
 
     return db

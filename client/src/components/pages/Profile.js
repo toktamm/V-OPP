@@ -172,7 +172,7 @@ export default function Profile(props) {
               <Card.Img variant="top" src="images/img-6.jpg" />
               <Card.Body>
                 <Card.Title>↓↓The best volunteer ever↙↙ </Card.Title>
-                <Card.Title>{props.user.first_name}</Card.Title>
+                <Card.Title>{props?.user?.first_name}</Card.Title>
               </Card.Body>
             </Card>
           </Accordion>
@@ -188,9 +188,9 @@ export default function Profile(props) {
             </thead>
             <tbody>
               <tr>
-                <td>{props.user.first_name}</td>
-                <td>{props.user.last_name}</td>
-                <td>{props.user.email}</td>
+                <td>{props?.user?.first_name}</td>
+                <td>{props?.user?.last_name}</td>
+                <td>{props?.user?.email}</td>
               </tr>
               <tr></tr>
             </tbody>
@@ -201,7 +201,7 @@ export default function Profile(props) {
             </thead>
             <tbody>
               <tr>
-                <td colSpan="3">{props.user.address}</td>
+                <td colSpan="3">{props?.user?.address}</td>
               </tr>
               <tr></tr>
             </tbody>

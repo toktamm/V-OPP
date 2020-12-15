@@ -31,16 +31,19 @@ export default function Detailed(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let users_id = props.user.id;
-    let post_id = props.eachPostId;
+    let users_id = props?.user?.id;
+    let post_id = props?.eachPostId;
     let data = {
       users_id,
       post_id,
     };
+    setPositions(positions - 1);
+
+
     return Axios.post("http://localhost:3001/api/apply", data)
       .then((respond) => {
         console.log("this is respond: ", respond);
-        history.push("/");
+        history.push("/profile");
       })
       .catch((err) => {
         console.log("Got an error: ", err);
@@ -51,11 +54,27 @@ export default function Detailed(props) {
 
   const [postList, setpostList] = useState([]);
 
+  const detailedPost = postList.find((post) => post.id === props.eachPostId);
+
+
+  const [positions, setPositions] = useState(detailedPost?.positions_available);
+
+  useEffect(() => {
+    setPositions(detailedPost?.positions_available)
+  }, [detailedPost]);
+
+
+
+
+
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
       setpostList(data.data);
+      console.log("data from axios is: ", data);
+
     });
   }, []);
+
 
 
   // // this function is not being used
@@ -68,7 +87,11 @@ export default function Detailed(props) {
   //   }
   // }
 
-  const detailedPost = postList.find((post) => post.id === props.eachPostId);
+
+  // const decremenetPositions
+  // if (detailedPost.positions_available > 0) {
+
+  // }
 
 
   // for eachPostId (old)
@@ -94,24 +117,24 @@ export default function Detailed(props) {
               {detailedPost?.organization}
             </h6>
             <h5 className="posts__item__text">
-            {detailedPost?.description}
-          </h5>
-          <h6 className="posts__item__address">
-            {detailedPost?.street}, {detailedPost?.city}, {detailedPost?.province}, {detailedPost?.post_code}
-          </h6>
-          <h6 className="posts__item__positions">
-            Positions Available: {detailedPost?.positions_available}
-          </h6>
-          {/* <button className="posts__volunteer__btn">Volunteer</button>
+              {detailedPost?.description}
+            </h5>
+            <h6 className="posts__item__address">
+              {detailedPost?.street}, {detailedPost?.city}, {detailedPost?.province}, {detailedPost?.post_code}
+            </h6>
+            <h6 className="posts__item__positions">
+              Positions Available: {positions}
+            </h6>
+            {/* <button className="posts__volunteer__btn">Volunteer</button>
             <button className="posts__volunteer__btn">Contact Us</button> */}
 
-          <Button onClick={handleSubmit} className="posts__volunteer__btn" block size="lg" type="submit">
-            Volunteer
+            <Button onClick={handleSubmit} className="posts__volunteer__btn" block size="lg" type="submit">
+              Volunteer
         </Button>
-          <Button className="posts__volunteer__btn" block size="lg" type="submit">
-            Contact Us
-        </Button>
-          <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
+            {/* <Button className="posts__volunteer__btn" block size="lg" type="submit">
+              Contact Us
+        </Button> */}
+            <Map eachPostId={props.eachPostId} detailedPost={detailedPost} />
           </div>
         </figure>
       </div>

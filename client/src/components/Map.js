@@ -24,8 +24,8 @@ const mapContainerStyle = {
 };
 
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 43.798043,
+  lng: -79.420052,
 };
 
 const libraries = ["places"];
