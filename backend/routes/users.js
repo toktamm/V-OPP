@@ -66,7 +66,7 @@ module.exports = ({
     let { first_name, last_name, email, password, phone, address } = req.body;
 
     // user registration form data
-    console.log("req.body is ", req.body);
+    // console.log("req.body is ", req.body);
 
     // add all the new user info to the db
 
@@ -149,7 +149,7 @@ module.exports = ({
 
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
-    console.log("req body inside post login: ", req.body);
+    // console.log("req body inside post login: ", req.body);
     login(email, password)
       .then((user) => {
         // console.log('user inside post login .then: ', user)

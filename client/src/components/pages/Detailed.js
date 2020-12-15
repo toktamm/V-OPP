@@ -21,19 +21,18 @@ export default function Detailed(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let users_id = props.user.id;
-    let post_id = props.eachPostId;
+    let users_id = props?.user?.id;
+    let post_id = props?.eachPostId;
     let data = {
       users_id,
       post_id,
     };
-
     setPositions(positions - 1);
+
 
     return Axios.post("http://localhost:3001/api/apply", data)
       .then((respond) => {
         console.log("this is respond: ", respond);
-
         history.push("/profile");
       })
       .catch((err) => {
@@ -49,9 +48,24 @@ export default function Detailed(props) {
     setPositions(detailedPost?.positions_available);
   }, [detailedPost]);
 
+  const detailedPost = postList.find((post) => post.id === props.eachPostId);
+
+
+  const [positions, setPositions] = useState(detailedPost?.positions_available);
+
+  useEffect(() => {
+    setPositions(detailedPost?.positions_available)
+  }, [detailedPost]);
+
+
+
+
+
   useEffect(() => {
     Axios.get("http://localhost:3001/api/posts").then((data) => {
       setpostList(data.data);
+      console.log("data from axios is: ", data);
+
     });
   }, []);
 
