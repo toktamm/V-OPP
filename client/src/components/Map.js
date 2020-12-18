@@ -91,44 +91,16 @@ export default function Map(props) {
     });
 
 
-
-
-
-
-
   return (
     <div>
-      <h1>
-        <img className="logo" src="images/volunteer-logo.png" />
-      </h1>
-      {console.log("streetAddress inside return in Map is: ", streetAddress)}
 
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={9}
         center={center}
-      // options={options}
-      // onClick={onMapClick}
-
-      // onClick={(event) => {
-      //   setMarkers(current => [...current, {
-      //     lat: event.latLng.lat(),
-      //     lng: event.latLng.lng()
-      //   }])
-      // }}
-
-        // marker = {setMarkers(current => [...current, {
-        //   lat: lat,
-        //   lng: lng
-        // }])}
-
-
-      // onLoad={onMapLoad}
       >
-        {/* {markers.map(marker => <Marker
-          position={{ lat: marker.lati, lng: marker.lngi }} />)} */}
-
+ 
         <Marker position={{lat, lng}} />
 
       </GoogleMap>
