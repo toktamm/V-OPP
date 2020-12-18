@@ -66,7 +66,6 @@ module.exports = ({
     let { first_name, last_name, email, password, phone, address } = req.body;
 
     // user registration form data
-    // console.log("req.body is ", req.body);
 
     // add all the new user info to the db
 
@@ -81,7 +80,6 @@ module.exports = ({
         } else {
           // store hashsed password
           password = bcrypt.hashSync(password, salt);
-          // console.log("This is a new user with hashed password = ", password)
 
           // addUser works
           return addUser(
@@ -110,22 +108,6 @@ module.exports = ({
       );
   });
 
-  // // this is a POST request to api/users/register
-
-  // router.post("/register", (req, res) => {
-
-  //     const { first_name, last_name, email, password, phone, address } = req.body;
-  //     register(first_name, last_name, email, password, phone, address, database)
-  //         .then(user => {
-  //             if (!user) {
-  //                 res.redirect("/error_message");
-  //                 return;
-  //             }
-  //             req.session.userId = user.id;
-  //             res.redirect("/");
-  //         })
-  //         .catch((error) => res.send(error.message));
-  // });
 
   // login
 
@@ -181,3 +163,4 @@ module.exports = ({
 
   return router;
 };
+
