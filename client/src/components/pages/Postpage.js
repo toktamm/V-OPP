@@ -64,7 +64,7 @@ export default function PostPage(props) {
     <section className="PostPage">
       <h1>
         {console.log(
-          "this is props from Postpage.js            " + props.user.id
+          "this is props from Postpage.js            " + props?.user?.id
         )}
       </h1>
       <FindPost />
