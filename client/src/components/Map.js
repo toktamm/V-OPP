@@ -29,49 +29,20 @@ const center = {
 const libraries = ["places"];
 
 export default function Map(props) {
-<<<<<<< HEAD
-  // console.log("eachPostId on Map is:", eachPostId)
-  console.log("props in Map is: ", props);
-=======
 
   console.log("props in Map is: ", props)
->>>>>>> feature/detailed
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-<<<<<<< HEAD
-  // const passIsLoadedToParent = props.passToParent(isLoaded);
-
-  // const [postList, setpostList] = useState([]);
-
-  // const [detailedPost, setDetailedPost] = useState([]);
-=======
->>>>>>> feature/detailed
 
   const [markers, setMarkers] = React.useState([]);
 
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
 
-<<<<<<< HEAD
-  // useEffect(() => {
-  //   Axios.get("http://localhost:3001/api/posts").then((data) => {
-  //     // console.log("posts ------- ", data);
-  //     setpostList(data.data);
-  //   });
-  // }, []);
-
-  // console.log("postList in the Map is:", postList)
-  // const detailedPost = postList.find(post => post.id === eachPostId);
-  // console.log("detailedPost in the Map is:", detailedPost)
-
-  // console.log("street in Map is: ", props?.detailedPost.street)
-  // console.log("city in Map is: ", props?.detailedPost.city)
-=======
->>>>>>> feature/detailed
 
   const streetAddress = props?.detailedPost?.street;
   const cityName = props?.detailedPost?.city;

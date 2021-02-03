@@ -41,20 +41,13 @@ export default function Detailed(props) {
   }
 
   const [postList, setpostList] = useState([]);
+
   const detailedPost = postList.find((post) => post.id === props.eachPostId);
 
   const [positions, setPositions] = useState(detailedPost?.positions_available);
+
   useEffect(() => {
     setPositions(detailedPost?.positions_available);
-  }, [detailedPost]);
-
-  const detailedPost = postList.find((post) => post.id === props.eachPostId);
-
-
-  const [positions, setPositions] = useState(detailedPost?.positions_available);
-
-  useEffect(() => {
-    setPositions(detailedPost?.positions_available)
   }, [detailedPost]);
 
 
